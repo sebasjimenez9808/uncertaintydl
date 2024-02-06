@@ -35,14 +35,6 @@ class BayesianLinear(nn.Module):
         return torch.nn.functional.linear(x, weight, bias)
 
 
-class SineActivation(nn.Module):
-    def __init__(self):
-        super().__init__()
-
-    def forward(self, x):
-        return torch.sin(x)
-
-
 class BayesianNet(nn.Module):
     def __init__(self, input_dim, hidden_dim, output_dim):
         super().__init__()
@@ -58,7 +50,7 @@ class BayesianNet(nn.Module):
         return x
 
 
-def loss_function(model, x, y, kl_weight=0.01):
+def loss_function(model, x, y, kl_weight=0.7):
     # Compute model prediction
     prediction = model(x)
 
@@ -69,22 +61,21 @@ def loss_function(model, x, y, kl_weight=0.01):
     kl_loss = 0.
     for layer in model.children():
         if isinstance(layer, BayesianLinear):
-            kl_loss += torch.sum(
-                layer.weight_rho - torch.log(1 + torch.exp(layer.weight_rho)) +
-                (layer.weight_mu ** 2) / (1 + torch.exp(layer.weight_rho)) - 0.5
-            )
-            kl_loss += torch.sum(
-                layer.bias_rho - torch.log(1 + torch.exp(layer.bias_rho)) +
-                (layer.bias_mu ** 2) / (1 + torch.exp(layer.bias_rho)) - 0.5
-            )
+            kl_loss += torch.distributions.kl.kl_divergence(
+                Normal(layer.weight_mu, torch.log(1 + torch.exp(layer.weight_rho))),
+                Normal(torch.zeros_like(layer.weight_mu), torch.ones_like(layer.weight_rho))
+            ).sum()
+
+            kl_loss += torch.distributions.kl.kl_divergence(
+                Normal(layer.bias_mu, torch.log(1 + torch.exp(layer.bias_rho))),
+                Normal(torch.zeros_like(layer.bias_mu), torch.ones_like(layer.bias_rho))
+            ).sum()
+
 
     # Combine NLL and KL losses
-    loss = nll_loss + kl_weight * kl_loss
+    loss = (1-kl_weight)*nll_loss + kl_weight * kl_loss
 
     return loss
-
-
-# ... (Set up data, optimizer, etc.)
 
 model = BayesianNet(1, 40, 1)  # Adjust input/hidden/output dimensions as needed
 
@@ -93,7 +84,8 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.01)  # Adjust learning rat
 
 for epoch in range(100):
     optimizer.zero_grad()
-    loss = loss_function(model, x_train, y_train)
+    loss = loss_function(model, x_train, y_train
+                         )  # Adjust y_train dimensions as needed
     loss.backward()
     optimizer.step()
 
@@ -127,12 +119,12 @@ std_prediction = np.array(std_prediction)
 
 plt.plot(x_plot, mean_prediction, label='Mean Prediction',
          color='blue')
-#plt.fill_between(x_plot, mean_prediction - std_prediction, mean_prediction + std_prediction, alpha=0.2,
-#                 label='Uncertainty')
+plt.fill_between(x_plot, mean_prediction - std_prediction, mean_prediction + std_prediction, alpha=0.2,
+                 label='Uncertainty')
 plt.scatter(x_train.numpy(), y_train.numpy(), label='True Data')
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title('Bayesian Neural Network Predictions with Uncertainty')
+plt.title('Variational Inference')
 plt.legend()
 plt.show()
 

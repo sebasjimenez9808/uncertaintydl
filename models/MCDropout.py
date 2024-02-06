@@ -36,10 +36,10 @@ model = MCDropoutNet(1, 40, 1)
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01)  # Adjust learning rate as needed
 
 for epoch in range(100):
-    model.train()
+    #model.train()
     optimizer.zero_grad()
     predictions = model(x_train, i=epoch+1)  # Pass the epoch number as the seed for dropout
-    loss = F.mse_loss(predictions.mean(dim=0), y_train)  # Calculate loss on mean prediction
+    loss = F.mse_loss(predictions, y_train.unsqueeze(1))  # Calculate loss on mean prediction
     loss.backward()
     optimizer.step()
 
@@ -47,7 +47,7 @@ def generate_predictions(model, x, num_samples=100):
     predictions = []
     for _ in range(num_samples):
         with torch.no_grad():
-            model.eval()
+            #model.eval()
             prediction = model(x, _+101, )
         predictions.append(prediction.detach().numpy())  # Store as NumPy arrays
     return np.asarray(predictions)
@@ -78,7 +78,7 @@ plt.fill_between(x_plot, mean_prediction - std_prediction, mean_prediction + std
 plt.scatter(x_train.numpy(), y_train.numpy(), label='True Data')
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title('Bayesian Neural Network Predictions with Uncertainty')
+plt.title('MC Dropout')
 plt.legend()
 plt.show()
 

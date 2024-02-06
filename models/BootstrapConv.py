@@ -17,19 +17,21 @@ y_train = torch.Tensor(y_train)
 class BootstrapNet(nn.Module):
     def __init__(self, input_dim, hidden_dim, output_dim):
         super().__init__()
-        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.conv1 = nn.Conv1d(in_channels=1, out_channels=40, kernel_size=1)
+        self.pool = nn.MaxPool1d(kernel_size=1)
+        self.fc1 = nn.Linear(hidden_dim, hidden_dim)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc3 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc4 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc5 = nn.Linear(hidden_dim, output_dim)
+        self.fc3 = nn.Linear(hidden_dim, output_dim)
 
     def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        x = torch.relu(self.fc2(x))
-        x = torch.relu(self.fc3(x))
-        x = torch.relu(self.fc4(x))
-        x = torch.relu(self.fc5(x))  # No activation for final layer
+        x = F.relu(self.conv1(x))
+        x = self.pool(x)
+        x = torch.flatten(x, 1)  # Flatten after pooling
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)  # No activation for final layer
         return x
+
 
 # generate bootstraping samples from the training data
 def generate_bootstrap_samples(x, y, num_samples=100):
@@ -63,7 +65,7 @@ for i in range(x_bootstrap.shape[0]):
     optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
     for epoch in range(100):
         optimizer.zero_grad()
-        predictions = model(x_bootstrap[i]) # unsqueeze this x for convolutional nn
+        predictions = model(x_bootstrap[i].unsqueeze(1)) # unsqueeze this x for convolutional nn
         loss = F.mse_loss(predictions, y_bootstrap[i].unsqueeze(1))
         loss.backward()
         optimizer.step()
@@ -108,7 +110,7 @@ plt.fill_between(x_plot, mean_prediction - std_prediction, mean_prediction + std
                  label='Uncertainty')
 plt.xlabel("Independent Variable (x)")
 plt.ylabel("Dependent Variable (y)")
-plt.title("Bootstrap")
+plt.title("Bootstrap CNN")
 plt.legend()
 plt.show()
 plt.close()

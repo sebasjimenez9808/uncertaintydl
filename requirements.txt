@@ -3,3 +3,5 @@ torchvision==0.16.2
 torchaudio==2.1.2
 jupyter==1.0.0
 pymc==5.10.3
+jax==0.4.23
+numpyro==0.13.2
