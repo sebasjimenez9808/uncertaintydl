@@ -1,114 +1,77 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 import numpy as np
-import matplotlib.pyplot as plt
-from models.data_generation import generate_synthetic_data
-
-torch.manual_seed(42)
-np.random.seed(42)
-
-x_train, y_train, y_bernoulli_train = generate_synthetic_data()
-
-x_train = torch.Tensor(x_train).reshape(-1, 1)
-y_train = torch.Tensor(y_train)
+from utils.data_generation import BootstrapDataset, RegressionDataset
+from torch.utils.data import DataLoader
+from tqdm import tqdm
 
 
-class BootstrapNet(nn.Module):
-    def __init__(self, input_dim, hidden_dim, output_dim):
+class RegressionMLP(nn.Module):
+    def __init__(self, input_dim: int, hidden_dim: int, output_dim: int = 1, n_hidden: int = 1,
+                 seed: int = 42):
         super().__init__()
+        torch.manual_seed(seed)
         self.fc1 = nn.Linear(input_dim, hidden_dim)
-        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc3 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc4 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc5 = nn.Linear(hidden_dim, output_dim)
+        self.hidden_layers = {
+            f"fc{i + 2}": nn.Linear(hidden_dim, hidden_dim) for i in range(n_hidden)
+        }
+        self.fc_mu = nn.Linear(hidden_dim, output_dim)
+        self.fc_sigma = nn.Linear(hidden_dim, output_dim)
 
     def forward(self, x):
         x = torch.relu(self.fc1(x))
-        x = torch.relu(self.fc2(x))
-        x = torch.relu(self.fc3(x))
-        x = torch.relu(self.fc4(x))
-        x = torch.relu(self.fc5(x))  # No activation for final layer
-        return x
-
-# generate bootstraping samples from the training data
-def generate_bootstrap_samples(x, y, num_samples=100):
-    """Generates bootstrap samples from the training data.
-
-    Args:
-        x (torch.Tensor): The independent variable data.
-        y (torch.Tensor): The dependent variable data.
-        num_samples (int, optional): The number of bootstrap samples to generate. Defaults to 100.
-
-    Returns:
-        tuple: The generated bootstrap samples for x and y.
-    """
-    x_samples = []
-    y_samples = []
-    for _ in range(num_samples):
-        np.random.seed(_ + 1 * 10 + 42)
-        indices = np.random.choice(len(x), int(len(x) * 0.6), replace=True)  # Generate random indices with replacement
-        x_samples.append(x[indices])
-        y_samples.append(y[indices])
-    return torch.stack(x_samples), torch.stack(y_samples)
+        for layer in self.hidden_layers.values():
+            x = torch.relu(layer(x))
+        mu = self.fc_mu(x)
+        sigma = torch.exp(self.fc_sigma(x))
+        return mu, sigma
 
 
-x_bootstrap, y_bootstrap = generate_bootstrap_samples(x_train, y_train)
 
-# iterate over the bootstrap samples and train a model on each
-models = []
-for i in range(x_bootstrap.shape[0]):
-    torch.manual_seed(i + 42)
-    model = BootstrapNet(1, 40, 1)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
-    for epoch in range(100):
-        optimizer.zero_grad()
-        predictions = model(x_bootstrap[i]) # unsqueeze this x for convolutional nn
-        loss = F.mse_loss(predictions, y_bootstrap[i].unsqueeze(1))
-        loss.backward()
-        optimizer.step()
-    models.append(model)
+class BootstrapEnsemble(RegressionMLP):
+    def __init__(self, input_dim: int, hidden_dim: int, output_dim: int,
+                 reg_fct: callable,
+                 n_hidden: int = 4, n_models: int = 100,
+                 bootstrap_size: float = 0.6):
+        super().__init__(input_dim, hidden_dim, output_dim, n_hidden)
+        self.n_models = n_models
+        self.bootstrap_size = bootstrap_size
+        self.models = [RegressionMLP(input_dim, hidden_dim, output_dim, n_hidden) for _ in range(n_models)]
+        self.data_set = RegressionDataset(reg_fct, n_samples=1000)
+        self.model_loss = None
+
+    def train_model(self, loss_fct: callable, n_epochs: int = 100, lr: float = 0.01,
+                    batch_size: int = 32):
+        bootstrap_sample = BootstrapDataset(self.data_set.x_train,
+                                            self.data_set.y_train,
+                                            self.bootstrap_size, self.n_models)
+        loss_array = {i: [] for i in range(self.n_models)}
+        for i, model in enumerate(tqdm(self.models)):
+            bootstrap_sample.index_bootstrap = i
+            data_loader = DataLoader(bootstrap_sample, batch_size=batch_size, shuffle=True)
+            optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+            loss_all_epochs = []
+            for epoch in range(n_epochs):
+                loss_this_epoch = []
+                for x, y in data_loader:
+                    x = x.float()
+                    y = y.float()
+                    optimizer.zero_grad()
+                    predictions = model(x)
+                    loss = loss_fct(predictions, y)
+                    loss.backward()
+                    optimizer.step()
+                    loss_this_epoch.append(loss.item())
+                loss_all_epochs.append(sum(loss_this_epoch) / len(loss_this_epoch))
+            loss_array[i] = loss_all_epochs
+        self.model_loss = loss_array
+
+    def forward(self, x):
+        predictions = []
+        for model in self.models:
+            with torch.no_grad():
+                prediction = model(x)
+            predictions.append(prediction.detach().numpy())
+        return np.asarray(predictions)
 
 
-# generate predictions from each model
-def generate_predictions(models, x):
-    predictions = []
-    for model in models:
-        with torch.no_grad():
-            prediction = model(x.unsqueeze(1))
-        predictions.append(prediction.detach().numpy())
-    return np.asarray(predictions)
-
-
-predictions = generate_predictions(models, x_train)
-
-# calculate mean and standard deviation of the predictions based on x_bootstrap values
-mean_prediction = np.mean(predictions, axis=0)
-std_prediction = np.std(predictions, axis=0)
-
-#mean_prediction = np.array(predictions[50])
-
-mean_prediction = mean_prediction.reshape(-1, 1)
-std_prediction = std_prediction.reshape(-1, 1)
-
-x_plot = x_train.numpy().squeeze()  # Convert to NumPy array for plotting
-mean_prediction = mean_prediction.squeeze()
-std_prediction = std_prediction.squeeze()
-
-x_plot, mean_prediction, std_prediction = zip(*sorted(zip(x_plot, mean_prediction, std_prediction)))
-x_plot = np.array(x_plot)
-mean_prediction = np.array(mean_prediction)
-std_prediction = np.array(std_prediction)
-
-# Create the plot
-plt.figure(figsize=(10, 6))
-plt.scatter(x_train, y_train, s=2, alpha=0.7)
-plt.plot(x_plot, mean_prediction, label='Mean Prediction', color='blue')
-plt.fill_between(x_plot, mean_prediction - std_prediction, mean_prediction + std_prediction, alpha=0.2,
-                 label='Uncertainty')
-plt.xlabel("Independent Variable (x)")
-plt.ylabel("Dependent Variable (y)")
-plt.title("Bootstrap")
-plt.legend()
-plt.show()
-plt.close()

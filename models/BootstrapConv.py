@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 import matplotlib.pyplot as plt
-from models.data_generation import generate_synthetic_data
+from utils.data_generation import generate_synthetic_data
 
 torch.manual_seed(42)
 np.random.seed(42)

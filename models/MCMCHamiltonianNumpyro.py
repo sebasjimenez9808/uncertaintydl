@@ -6,7 +6,7 @@ import numpyro.distributions as dist
 from numpyro.infer import MCMC, NUTS
 import matplotlib.pyplot as plt
 
-from models.data_generation import generate_synthetic_data
+from utils.data_generation import generate_synthetic_data
 
 # Generate synthetic data for illustration purposes
 np.random.seed(42)
