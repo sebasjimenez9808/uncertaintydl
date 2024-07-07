@@ -1,0 +1,8 @@
+wandb_version: 1
+
+epochs:
+  value: 100
+kl_weight:
+  value: 0.3
+lr:
+  value: 0.1

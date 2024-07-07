@@ -1,0 +1,281 @@
+2024-05-28 02:08:01,306 INFO    StreamThr :59240 [internal.py:wandb_internal():85] W&B internal server running at pid: 59240, started at: 2024-05-28 02:08:01.306020
+2024-05-28 02:08:01,309 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status
+2024-05-28 02:08:01,319 INFO    WriterThread:59240 [datastore.py:open_for_write():87] open: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/run-541rwnq4.wandb
+2024-05-28 02:08:01,320 DEBUG   SenderThread:59240 [sender.py:send():378] send: header
+2024-05-28 02:08:01,325 DEBUG   SenderThread:59240 [sender.py:send():378] send: run
+2024-05-28 02:08:01,672 INFO    SenderThread:59240 [dir_watcher.py:__init__():211] watching files in: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files
+2024-05-28 02:08:01,673 INFO    SenderThread:59240 [sender.py:_start_run_threads():1123] run started: 541rwnq4 with start time 1716854881.305302
+2024-05-28 02:08:01,683 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: check_version
+2024-05-28 02:08:01,684 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: check_version
+2024-05-28 02:08:01,778 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: run_start
+2024-05-28 02:08:02,906 ERROR   HandlerThread:59240 [gpu.py:is_available():381] Error initializing NVML: Driver Not Loaded
+2024-05-28 02:08:02,907 DEBUG   HandlerThread:59240 [system_info.py:__init__():26] System info init
+2024-05-28 02:08:02,907 DEBUG   HandlerThread:59240 [system_info.py:__init__():41] System info init done
+2024-05-28 02:08:02,907 INFO    HandlerThread:59240 [system_monitor.py:start():194] Starting system monitor
+2024-05-28 02:08:02,907 INFO    SystemMonitor:59240 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-28 02:08:02,908 INFO    HandlerThread:59240 [system_monitor.py:probe():214] Collecting system info
+2024-05-28 02:08:02,909 INFO    SystemMonitor:59240 [interfaces.py:start():188] Started cpu monitoring
+2024-05-28 02:08:02,911 INFO    SystemMonitor:59240 [interfaces.py:start():188] Started disk monitoring
+2024-05-28 02:08:02,912 INFO    SystemMonitor:59240 [interfaces.py:start():188] Started memory monitoring
+2024-05-28 02:08:02,913 INFO    SystemMonitor:59240 [interfaces.py:start():188] Started network monitoring
+2024-05-28 02:08:02,924 DEBUG   HandlerThread:59240 [system_info.py:probe():150] Probing system
+2024-05-28 02:08:02,927 DEBUG   HandlerThread:59240 [system_info.py:_probe_git():135] Probing git
+2024-05-28 02:08:02,937 DEBUG   HandlerThread:59240 [system_info.py:_probe_git():143] Probing git done
+2024-05-28 02:08:02,938 DEBUG   HandlerThread:59240 [system_info.py:probe():198] Probing system done
+2024-05-28 02:08:02,938 DEBUG   HandlerThread:59240 [system_monitor.py:probe():223] {'os': 'Linux-6.6.10-76060610-generic-x86_64-with-glibc2.35', 'python': '3.11.7', 'heartbeatAt': '2024-05-28T00:08:02.924315', 'startedAt': '2024-05-28T00:08:01.281605', 'docker': None, 'cuda': None, 'args': ('--mode=client', '--host=127.0.0.1', '--port=36335'), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'git': {'remote': 'https://github.com/sebasjimenez9808/uncertaintydl.git', 'commit': '3fb11525cb3bb9b8cdf83fe57efe0551a12be648'}, 'email': 'sebasjimenez9808@gmail.com', 'root': '/home/sebas/projectsPersonal/Learning/Thesis/ThesisCode', 'host': 'pop-os', 'username': 'sebas', 'executable': '/home/sebas/anaconda3/envs/pytorch_env/bin/python', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 3284.3872499999998, 'min': 1400.0, 'max': 2900.0}, 'cpu_freq_per_core': [{'current': 3324.981, 'min': 1400.0, 'max': 2900.0}, {'current': 3322.928, 'min': 1400.0, 'max': 2900.0}, {'current': 3324.465, 'min': 1400.0, 'max': 2900.0}, {'current': 3330.536, 'min': 1400.0, 'max': 2900.0}, {'current': 3358.682, 'min': 1400.0, 'max': 2900.0}, {'current': 3340.102, 'min': 1400.0, 'max': 2900.0}, {'current': 3358.403, 'min': 1400.0, 'max': 2900.0}, {'current': 3355.709, 'min': 1400.0, 'max': 2900.0}, {'current': 3343.783, 'min': 1400.0, 'max': 2900.0}, {'current': 3355.452, 'min': 1400.0, 'max': 2900.0}, {'current': 3355.44, 'min': 1400.0, 'max': 2900.0}, {'current': 3355.171, 'min': 1400.0, 'max': 2900.0}, {'current': 3304.188, 'min': 1400.0, 'max': 2900.0}, {'current': 3355.428, 'min': 1400.0, 'max': 2900.0}, {'current': 3355.438, 'min': 1400.0, 'max': 2900.0}, {'current': 3275.693, 'min': 1400.0, 'max': 2900.0}], 'disk': {'/': {'total': 459.5024719238281, 'used': 112.42080688476562}}, 'memory': {'total': 14.993942260742188}}
+2024-05-28 02:08:02,938 INFO    HandlerThread:59240 [system_monitor.py:probe():224] Finished collecting system info
+2024-05-28 02:08:02,938 INFO    HandlerThread:59240 [system_monitor.py:probe():227] Publishing system info
+2024-05-28 02:08:02,938 DEBUG   HandlerThread:59240 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-05-28 02:08:03,674 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/conda-environment.yaml
+2024-05-28 02:08:06,675 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/conda-environment.yaml
+2024-05-28 02:08:06,916 DEBUG   HandlerThread:59240 [system_info.py:_save_conda():222] Saving conda packages done
+2024-05-28 02:08:06,917 INFO    HandlerThread:59240 [system_monitor.py:probe():229] Finished publishing system info
+2024-05-28 02:08:06,921 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:06,921 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-28 02:08:06,922 DEBUG   SenderThread:59240 [sender.py:send():378] send: files
+2024-05-28 02:08:06,922 INFO    SenderThread:59240 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-05-28 02:08:07,031 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: python_packages
+2024-05-28 02:08:07,032 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 02:08:07,032 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: python_packages
+2024-05-28 02:08:07,033 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 02:08:07,353 DEBUG   SenderThread:59240 [sender.py:send():378] send: telemetry
+2024-05-28 02:08:07,502 INFO    wandb-upload_0:59240 [upload_job.py:push():130] Uploaded file /tmp/tmp5ltjg6xjwandb/j67x4114-wandb-metadata.json
+2024-05-28 02:08:07,679 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/wandb-metadata.json
+2024-05-28 02:08:07,679 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/requirements.txt
+2024-05-28 02:08:07,679 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:09,683 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:11,687 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:11,782 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:13,694 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:15,695 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:16,897 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:17,697 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:19,698 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:21,703 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:22,031 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 02:08:22,032 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 02:08:22,358 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:23,706 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:25,710 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:27,441 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:27,715 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:29,716 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:31,723 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:32,479 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:32,723 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/config.yaml
+2024-05-28 02:08:33,723 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:35,726 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:37,032 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 02:08:37,032 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 02:08:37,728 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:37,985 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:39,732 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:41,733 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:43,117 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:43,739 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:45,740 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:47,741 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:48,446 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:49,746 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:51,748 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:52,039 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 02:08:52,041 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 02:08:53,754 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:53,830 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:55,759 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:57,763 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:08:58,955 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:08:59,767 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:01,768 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:02,914 DEBUG   SystemMonitor:59240 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-28 02:09:02,916 DEBUG   SenderThread:59240 [sender.py:send():378] send: stats
+2024-05-28 02:09:03,774 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:04,167 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:05,778 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:07,032 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 02:09:07,033 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 02:09:07,782 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:09,287 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:09,784 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:11,786 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:13,787 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:14,405 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:15,791 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:17,795 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:19,622 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:19,799 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:21,800 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:22,033 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 02:09:22,033 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 02:09:23,806 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:24,820 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:25,810 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:27,811 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:29,812 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:29,922 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:31,815 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:32,918 DEBUG   SenderThread:59240 [sender.py:send():378] send: stats
+2024-05-28 02:09:33,815 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:35,157 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:35,816 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:37,034 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 02:09:37,042 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 02:09:37,818 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:39,821 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:40,252 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:41,822 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:43,827 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:45,518 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:45,831 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:47,835 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:49,838 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:50,531 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:51,839 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:52,033 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 02:09:52,033 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 02:09:53,843 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:55,651 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:09:55,843 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:57,845 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:09:59,847 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:10:00,665 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:10:01,851 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:10:02,919 DEBUG   SenderThread:59240 [sender.py:send():378] send: stats
+2024-05-28 02:10:03,854 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:10:05,859 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:10:06,442 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:10:07,033 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 02:10:07,034 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 02:10:07,859 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:10:08,766 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-28 02:10:08,768 DEBUG   SenderThread:59240 [sender.py:send():378] send: history
+2024-05-28 02:10:08,768 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: summary_record
+2024-05-28 02:10:08,769 INFO    SenderThread:59240 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-28 02:10:08,779 DEBUG   SenderThread:59240 [sender.py:send():378] send: telemetry
+2024-05-28 02:10:08,780 DEBUG   SenderThread:59240 [sender.py:send():378] send: exit
+2024-05-28 02:10:08,780 INFO    SenderThread:59240 [sender.py:send_exit():585] handling exit code: 0
+2024-05-28 02:10:08,780 INFO    SenderThread:59240 [sender.py:send_exit():587] handling runtime: 127
+2024-05-28 02:10:08,781 INFO    SenderThread:59240 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-28 02:10:08,781 INFO    SenderThread:59240 [sender.py:send_exit():593] send defer
+2024-05-28 02:10:08,781 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:08,781 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 0
+2024-05-28 02:10:08,781 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:08,782 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-05-28 02:10:08,782 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 1
+2024-05-28 02:10:08,782 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:08,782 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 1
+2024-05-28 02:10:08,782 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:08,782 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-05-28 02:10:08,782 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 2
+2024-05-28 02:10:08,782 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:08,782 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 2
+2024-05-28 02:10:08,782 INFO    HandlerThread:59240 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-28 02:10:08,783 DEBUG   SystemMonitor:59240 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-28 02:10:08,783 DEBUG   SystemMonitor:59240 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-28 02:10:08,783 INFO    HandlerThread:59240 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-28 02:10:08,784 INFO    HandlerThread:59240 [interfaces.py:finish():200] Joined disk monitor
+2024-05-28 02:10:08,784 INFO    HandlerThread:59240 [interfaces.py:finish():200] Joined memory monitor
+2024-05-28 02:10:08,784 INFO    HandlerThread:59240 [interfaces.py:finish():200] Joined network monitor
+2024-05-28 02:10:08,784 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:08,784 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-05-28 02:10:08,784 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 3
+2024-05-28 02:10:08,784 DEBUG   SenderThread:59240 [sender.py:send():378] send: stats
+2024-05-28 02:10:08,785 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:08,785 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 3
+2024-05-28 02:10:08,785 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:08,785 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-05-28 02:10:08,785 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 4
+2024-05-28 02:10:08,785 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:08,785 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 4
+2024-05-28 02:10:08,785 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:08,785 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-05-28 02:10:08,785 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 5
+2024-05-28 02:10:08,786 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:08,786 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 5
+2024-05-28 02:10:08,786 DEBUG   SenderThread:59240 [sender.py:send():378] send: summary
+2024-05-28 02:10:08,786 INFO    SenderThread:59240 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-28 02:10:08,787 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:08,787 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-05-28 02:10:08,787 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 6
+2024-05-28 02:10:08,787 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:08,787 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 6
+2024-05-28 02:10:08,787 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:08,787 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-05-28 02:10:08,790 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 02:10:08,860 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/wandb-summary.json
+2024-05-28 02:10:08,957 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 7
+2024-05-28 02:10:08,957 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:08,957 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 7
+2024-05-28 02:10:08,957 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:08,957 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-05-28 02:10:09,523 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 8
+2024-05-28 02:10:09,523 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:09,523 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 8
+2024-05-28 02:10:09,524 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:09,524 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-05-28 02:10:09,524 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 9
+2024-05-28 02:10:09,524 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:09,524 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 9
+2024-05-28 02:10:09,524 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:09,524 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-05-28 02:10:09,524 INFO    SenderThread:59240 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-05-28 02:10:09,781 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-28 02:10:09,861 INFO    Thread-12 :59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:10:09,862 INFO    SenderThread:59240 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/config.yaml
+2024-05-28 02:10:09,863 INFO    SenderThread:59240 [dir_watcher.py:finish():388] scan: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files
+2024-05-28 02:10:09,863 INFO    SenderThread:59240 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/conda-environment.yaml conda-environment.yaml
+2024-05-28 02:10:09,864 INFO    SenderThread:59240 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log output.log
+2024-05-28 02:10:09,867 INFO    SenderThread:59240 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/config.yaml config.yaml
+2024-05-28 02:10:09,868 INFO    SenderThread:59240 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/requirements.txt requirements.txt
+2024-05-28 02:10:09,868 INFO    SenderThread:59240 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/wandb-metadata.json wandb-metadata.json
+2024-05-28 02:10:09,869 INFO    SenderThread:59240 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/wandb-summary.json wandb-summary.json
+2024-05-28 02:10:09,871 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 10
+2024-05-28 02:10:09,876 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: poll_exit
+2024-05-28 02:10:09,877 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:09,881 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 10
+2024-05-28 02:10:09,887 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:09,887 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-05-28 02:10:09,887 INFO    SenderThread:59240 [file_pusher.py:finish():169] shutting down file pusher
+2024-05-28 02:10:10,232 INFO    wandb-upload_0:59240 [upload_job.py:push():130] Uploaded file /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/conda-environment.yaml
+2024-05-28 02:10:10,301 INFO    wandb-upload_2:59240 [upload_job.py:push():130] Uploaded file /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/config.yaml
+2024-05-28 02:10:10,391 INFO    wandb-upload_4:59240 [upload_job.py:push():130] Uploaded file /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/wandb-summary.json
+2024-05-28 02:10:10,409 INFO    wandb-upload_3:59240 [upload_job.py:push():130] Uploaded file /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/requirements.txt
+2024-05-28 02:10:10,422 INFO    wandb-upload_1:59240 [upload_job.py:push():130] Uploaded file /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/files/output.log
+2024-05-28 02:10:10,623 INFO    Thread-11 (_thread_body):59240 [sender.py:transition_state():613] send defer: 11
+2024-05-28 02:10:10,625 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:10,626 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 11
+2024-05-28 02:10:10,628 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:10,628 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-05-28 02:10:10,628 INFO    SenderThread:59240 [file_pusher.py:join():175] waiting for file pusher
+2024-05-28 02:10:10,629 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 12
+2024-05-28 02:10:10,629 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:10,629 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 12
+2024-05-28 02:10:10,630 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:10,630 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-05-28 02:10:10,630 INFO    SenderThread:59240 [file_stream.py:finish():601] file stream finish called
+2024-05-28 02:10:10,761 INFO    SenderThread:59240 [file_stream.py:finish():605] file stream finish is done
+2024-05-28 02:10:10,761 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 13
+2024-05-28 02:10:10,762 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:10,762 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 13
+2024-05-28 02:10:10,762 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:10,762 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-05-28 02:10:10,762 INFO    SenderThread:59240 [sender.py:transition_state():613] send defer: 14
+2024-05-28 02:10:10,762 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: defer
+2024-05-28 02:10:10,762 INFO    HandlerThread:59240 [handler.py:handle_request_defer():184] handle defer: 14
+2024-05-28 02:10:10,763 DEBUG   SenderThread:59240 [sender.py:send():378] send: final
+2024-05-28 02:10:10,763 DEBUG   SenderThread:59240 [sender.py:send():378] send: footer
+2024-05-28 02:10:10,763 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: defer
+2024-05-28 02:10:10,763 INFO    SenderThread:59240 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-05-28 02:10:10,764 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-28 02:10:10,764 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: poll_exit
+2024-05-28 02:10:10,765 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: internal_messages
+2024-05-28 02:10:10,766 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: server_info
+2024-05-28 02:10:10,766 DEBUG   SenderThread:59240 [sender.py:send_request():405] send_request: server_info
+2024-05-28 02:10:10,806 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: get_summary
+2024-05-28 02:10:10,807 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: sampled_history
+2024-05-28 02:10:11,000 DEBUG   HandlerThread:59240 [handler.py:handle_request():158] handle_request: shutdown
+2024-05-28 02:10:11,000 INFO    HandlerThread:59240 [handler.py:finish():882] shutting down handler
+2024-05-28 02:10:11,766 INFO    WriterThread:59240 [datastore.py:close():296] close: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_020801-541rwnq4/run-541rwnq4.wandb
+2024-05-28 02:10:11,999 INFO    SenderThread:59240 [sender.py:finish():1545] shutting down sender
+2024-05-28 02:10:12,000 INFO    SenderThread:59240 [file_pusher.py:finish():169] shutting down file pusher
+2024-05-28 02:10:12,000 INFO    SenderThread:59240 [file_pusher.py:join():175] waiting for file pusher

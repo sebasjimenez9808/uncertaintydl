@@ -1,0 +1,123 @@
+{
+    "os": "Linux-6.6.10-76060610-generic-x86_64-with-glibc2.35",
+    "python": "3.11.7",
+    "heartbeatAt": "2024-05-20T19:46:52.557925",
+    "startedAt": "2024-05-20T19:46:51.236480",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--mode=client",
+        "--host=127.0.0.1",
+        "--port=38081"
+    ],
+    "state": "running",
+    "program": "<python with no main file>",
+    "codePathLocal": null,
+    "git": {
+        "remote": "https://github.com/sebasjimenez9808/uncertaintydl.git",
+        "commit": "3fb11525cb3bb9b8cdf83fe57efe0551a12be648"
+    },
+    "email": "sebasjimenez9808@gmail.com",
+    "root": "/home/sebas/projectsPersonal/Learning/Thesis/ThesisCode",
+    "host": "pop-os",
+    "username": "sebas",
+    "executable": "/home/sebas/anaconda3/envs/pytorch_env/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 2594.142125,
+        "min": 1400.0,
+        "max": 2900.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2971.3,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 3247.79,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 4201.624,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 4083.443,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2714.324,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2749.405,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 4189.689,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 4185.993,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1534.959,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1499.134,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 3527.59,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 3594.947,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 3030.888,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2921.25,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1660.537,
+            "min": 1400.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1825.866,
+            "min": 1400.0,
+            "max": 2900.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 459.5024719238281,
+            "used": 106.81454086303711
+        }
+    },
+    "memory": {
+        "total": 7.1306610107421875
+    }
+}

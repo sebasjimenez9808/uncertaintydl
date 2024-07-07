@@ -1,0 +1,31 @@
+  0%|          | 0/100 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/sebas/anaconda3/envs/pytorch_env/lib/python3.11/site-packages/IPython/core/interactiveshell.py", line 3553, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-3-41c5eef0efd2>", line 1, in <module>
+    model = train_and_test_model("deep_ensemble", input_dim=1, hidden_dim=40, output_dim=1,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<ipython-input-2-f1bc7b09e7c4>", line 83, in train_and_test_model
+    train_model(model, loss_fct=loss_fct, n_epochs=n_epochs, lr=lr, batch_size=batch_size)
+  File "<ipython-input-2-f1bc7b09e7c4>", line 40, in train_model
+    model.train_model(**kwargs)
+  File "/home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/models/deep_ensemble.py", line 78, in train_model
+    mse_this_epoch.append(self.get_mse(y, mu))
+                          ^^^^^^^^^^^^^^^^^^^
+  File "/home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/models/deep_ensemble.py", line 88, in get_mse
+    return np.mean((test_vals - predictions) ** 2)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sebas/anaconda3/envs/pytorch_env/lib/python3.11/site-packages/numpy/core/fromnumeric.py", line 3502, in mean
+    return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: mean() received an invalid combination of arguments - got (dtype=NoneType, out=NoneType, axis=NoneType, ), but expected one of:
+ * (*, torch.dtype dtype)
+ * (tuple of ints dim, bool keepdim, *, torch.dtype dtype)
+ * (tuple of names dim, bool keepdim, *, torch.dtype dtype)
+Traceback (most recent call last):
+  File "/home/sebas/anaconda3/envs/pytorch_env/lib/python3.11/site-packages/IPython/core/interactiveshell.py", line 3553, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-4-a2bce46dc485>", line 1, in <module>
+    wandb.finish()
+    ^^^^^
+NameError: name 'wandb' is not defined

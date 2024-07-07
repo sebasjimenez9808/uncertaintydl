@@ -1,0 +1,294 @@
+2024-05-27 00:58:26,150 INFO    StreamThr :39510 [internal.py:wandb_internal():85] W&B internal server running at pid: 39510, started at: 2024-05-27 00:58:26.149992
+2024-05-27 00:58:26,153 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status
+2024-05-27 00:58:26,154 INFO    WriterThread:39510 [datastore.py:open_for_write():87] open: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/run-x2jpmatv.wandb
+2024-05-27 00:58:26,154 DEBUG   SenderThread:39510 [sender.py:send():378] send: header
+2024-05-27 00:58:26,158 DEBUG   SenderThread:39510 [sender.py:send():378] send: run
+2024-05-27 00:58:26,513 INFO    SenderThread:39510 [dir_watcher.py:__init__():211] watching files in: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files
+2024-05-27 00:58:26,513 INFO    SenderThread:39510 [sender.py:_start_run_threads():1123] run started: x2jpmatv with start time 1716764306.149186
+2024-05-27 00:58:26,519 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: check_version
+2024-05-27 00:58:26,519 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: check_version
+2024-05-27 00:58:26,583 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: run_start
+2024-05-27 00:58:27,221 ERROR   HandlerThread:39510 [gpu.py:is_available():381] Error initializing NVML: Driver Not Loaded
+2024-05-27 00:58:27,221 DEBUG   HandlerThread:39510 [system_info.py:__init__():26] System info init
+2024-05-27 00:58:27,222 DEBUG   HandlerThread:39510 [system_info.py:__init__():41] System info init done
+2024-05-27 00:58:27,222 INFO    HandlerThread:39510 [system_monitor.py:start():194] Starting system monitor
+2024-05-27 00:58:27,222 INFO    SystemMonitor:39510 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-27 00:58:27,222 INFO    HandlerThread:39510 [system_monitor.py:probe():214] Collecting system info
+2024-05-27 00:58:27,223 INFO    SystemMonitor:39510 [interfaces.py:start():188] Started cpu monitoring
+2024-05-27 00:58:27,224 INFO    SystemMonitor:39510 [interfaces.py:start():188] Started disk monitoring
+2024-05-27 00:58:27,224 INFO    SystemMonitor:39510 [interfaces.py:start():188] Started memory monitoring
+2024-05-27 00:58:27,224 INFO    SystemMonitor:39510 [interfaces.py:start():188] Started network monitoring
+2024-05-27 00:58:27,232 DEBUG   HandlerThread:39510 [system_info.py:probe():150] Probing system
+2024-05-27 00:58:27,234 DEBUG   HandlerThread:39510 [system_info.py:_probe_git():135] Probing git
+2024-05-27 00:58:27,239 DEBUG   HandlerThread:39510 [system_info.py:_probe_git():143] Probing git done
+2024-05-27 00:58:27,239 DEBUG   HandlerThread:39510 [system_info.py:probe():198] Probing system done
+2024-05-27 00:58:27,239 DEBUG   HandlerThread:39510 [system_monitor.py:probe():223] {'os': 'Linux-6.6.10-76060610-generic-x86_64-with-glibc2.35', 'python': '3.11.7', 'heartbeatAt': '2024-05-26T22:58:27.232246', 'startedAt': '2024-05-26T22:58:26.145531', 'docker': None, 'cuda': None, 'args': ('--mode=client', '--host=127.0.0.1', '--port=36341'), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'git': {'remote': 'https://github.com/sebasjimenez9808/uncertaintydl.git', 'commit': '3fb11525cb3bb9b8cdf83fe57efe0551a12be648'}, 'email': 'sebasjimenez9808@gmail.com', 'root': '/home/sebas/projectsPersonal/Learning/Thesis/ThesisCode', 'host': 'pop-os', 'username': 'sebas', 'executable': '/home/sebas/anaconda3/envs/pytorch_env/bin/python', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 2557.56125, 'min': 1400.0, 'max': 2900.0}, 'cpu_freq_per_core': [{'current': 1926.699, 'min': 1400.0, 'max': 2900.0}, {'current': 2256.181, 'min': 1400.0, 'max': 2900.0}, {'current': 1892.149, 'min': 1400.0, 'max': 2900.0}, {'current': 1717.531, 'min': 1400.0, 'max': 2900.0}, {'current': 2637.933, 'min': 1400.0, 'max': 2900.0}, {'current': 4242.515, 'min': 1400.0, 'max': 2900.0}, {'current': 4031.32, 'min': 1400.0, 'max': 2900.0}, {'current': 1886.948, 'min': 1400.0, 'max': 2900.0}, {'current': 2749.945, 'min': 1400.0, 'max': 2900.0}, {'current': 1934.159, 'min': 1400.0, 'max': 2900.0}, {'current': 4230.275, 'min': 1400.0, 'max': 2900.0}, {'current': 3897.032, 'min': 1400.0, 'max': 2900.0}, {'current': 2440.015, 'min': 1400.0, 'max': 2900.0}, {'current': 2207.896, 'min': 1400.0, 'max': 2900.0}, {'current': 2067.967, 'min': 1400.0, 'max': 2900.0}, {'current': 2729.826, 'min': 1400.0, 'max': 2900.0}], 'disk': {'/': {'total': 459.5024719238281, 'used': 109.96979904174805}}, 'memory': {'total': 14.993946075439453}}
+2024-05-27 00:58:27,239 INFO    HandlerThread:39510 [system_monitor.py:probe():224] Finished collecting system info
+2024-05-27 00:58:27,239 INFO    HandlerThread:39510 [system_monitor.py:probe():227] Publishing system info
+2024-05-27 00:58:27,239 DEBUG   HandlerThread:39510 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-05-27 00:58:27,515 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/conda-environment.yaml
+2024-05-27 00:58:29,514 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/conda-environment.yaml
+2024-05-27 00:58:29,611 DEBUG   HandlerThread:39510 [system_info.py:_save_conda():222] Saving conda packages done
+2024-05-27 00:58:29,612 INFO    HandlerThread:39510 [system_monitor.py:probe():229] Finished publishing system info
+2024-05-27 00:58:29,613 DEBUG   SenderThread:39510 [sender.py:send():378] send: files
+2024-05-27 00:58:29,613 INFO    SenderThread:39510 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-05-27 00:58:29,685 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: python_packages
+2024-05-27 00:58:29,686 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-27 00:58:29,686 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: python_packages
+2024-05-27 00:58:29,687 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: stop_status
+2024-05-27 00:58:29,949 DEBUG   SenderThread:39510 [sender.py:send():378] send: telemetry
+2024-05-27 00:58:30,142 INFO    wandb-upload_0:39510 [upload_job.py:push():130] Uploaded file /tmp/tmpngegdcsywandb/x6qlx8j1-wandb-metadata.json
+2024-05-27 00:58:30,514 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/requirements.txt
+2024-05-27 00:58:30,515 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:30,515 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/wandb-metadata.json
+2024-05-27 00:58:31,251 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:58:32,515 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:34,515 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:36,278 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:58:36,516 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:38,519 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:40,519 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:41,367 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:58:42,520 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:44,520 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:44,686 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-27 00:58:44,686 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: stop_status
+2024-05-27 00:58:46,446 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:58:46,521 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:48,521 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:50,522 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:51,469 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:58:52,522 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:54,523 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:56,523 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:56,568 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:58:57,524 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/config.yaml
+2024-05-27 00:58:58,524 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:58:59,687 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-27 00:58:59,687 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: stop_status
+2024-05-27 00:59:00,524 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:01,819 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:02,525 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:04,525 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:06,526 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:06,835 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:08,526 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:10,527 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:11,863 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:12,527 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:14,528 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:14,686 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-27 00:59:14,687 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: stop_status
+2024-05-27 00:59:16,528 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:16,887 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:18,529 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:20,529 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:21,901 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:22,530 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:24,530 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:26,532 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:27,004 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:27,224 DEBUG   SystemMonitor:39510 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-27 00:59:27,225 DEBUG   SenderThread:39510 [sender.py:send():378] send: stats
+2024-05-27 00:59:28,556 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:29,686 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-27 00:59:29,687 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: stop_status
+2024-05-27 00:59:30,557 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:32,054 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:32,557 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:34,558 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:36,558 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:37,090 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:38,559 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:40,559 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:42,146 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:42,560 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:44,560 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:44,686 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-27 00:59:44,687 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: stop_status
+2024-05-27 00:59:46,561 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:47,178 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:48,561 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:50,562 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:52,225 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:52,562 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:54,563 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:56,563 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:57,225 DEBUG   SenderThread:39510 [sender.py:send():378] send: stats
+2024-05-27 00:59:57,226 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 00:59:58,564 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 00:59:59,686 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-27 00:59:59,687 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: stop_status
+2024-05-27 01:00:00,564 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:02,295 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 01:00:02,565 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:04,565 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:06,566 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:07,348 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 01:00:08,566 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:10,567 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:12,386 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 01:00:12,567 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:14,568 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:14,687 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-27 01:00:14,687 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: stop_status
+2024-05-27 01:00:16,568 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:17,417 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 01:00:18,569 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:20,569 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:22,461 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 01:00:22,570 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:24,570 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:26,571 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:27,226 DEBUG   SenderThread:39510 [sender.py:send():378] send: stats
+2024-05-27 01:00:27,470 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 01:00:28,571 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:29,687 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-27 01:00:29,687 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: stop_status
+2024-05-27 01:00:30,572 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:32,518 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 01:00:32,572 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:34,573 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:36,573 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:37,536 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 01:00:38,574 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:40,574 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:42,575 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:42,622 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 01:00:44,575 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:44,687 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-27 01:00:44,687 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: stop_status
+2024-05-27 01:00:45,018 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-27 01:00:45,018 DEBUG   SenderThread:39510 [sender.py:send():378] send: history
+2024-05-27 01:00:45,019 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: summary_record
+2024-05-27 01:00:45,019 INFO    SenderThread:39510 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-27 01:00:45,060 DEBUG   SenderThread:39510 [sender.py:send():378] send: telemetry
+2024-05-27 01:00:45,060 DEBUG   SenderThread:39510 [sender.py:send():378] send: exit
+2024-05-27 01:00:45,060 INFO    SenderThread:39510 [sender.py:send_exit():585] handling exit code: 0
+2024-05-27 01:00:45,060 INFO    SenderThread:39510 [sender.py:send_exit():587] handling runtime: 138
+2024-05-27 01:00:45,060 INFO    SenderThread:39510 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-27 01:00:45,061 INFO    SenderThread:39510 [sender.py:send_exit():593] send defer
+2024-05-27 01:00:45,061 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:45,061 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 0
+2024-05-27 01:00:45,061 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:45,061 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-05-27 01:00:45,061 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 1
+2024-05-27 01:00:45,061 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:45,061 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 1
+2024-05-27 01:00:45,061 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:45,061 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-05-27 01:00:45,061 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 2
+2024-05-27 01:00:45,061 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:45,061 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 2
+2024-05-27 01:00:45,061 INFO    HandlerThread:39510 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-27 01:00:45,062 DEBUG   SystemMonitor:39510 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-27 01:00:45,062 DEBUG   SystemMonitor:39510 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-27 01:00:45,062 INFO    HandlerThread:39510 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-27 01:00:45,062 INFO    HandlerThread:39510 [interfaces.py:finish():200] Joined disk monitor
+2024-05-27 01:00:45,062 INFO    HandlerThread:39510 [interfaces.py:finish():200] Joined memory monitor
+2024-05-27 01:00:45,062 INFO    HandlerThread:39510 [interfaces.py:finish():200] Joined network monitor
+2024-05-27 01:00:45,062 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:45,062 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-05-27 01:00:45,062 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 3
+2024-05-27 01:00:45,063 DEBUG   SenderThread:39510 [sender.py:send():378] send: stats
+2024-05-27 01:00:45,063 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:45,063 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 3
+2024-05-27 01:00:45,063 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:45,063 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-05-27 01:00:45,063 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 4
+2024-05-27 01:00:45,063 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:45,063 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 4
+2024-05-27 01:00:45,063 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:45,063 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-05-27 01:00:45,063 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 5
+2024-05-27 01:00:45,063 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:45,063 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 5
+2024-05-27 01:00:45,064 DEBUG   SenderThread:39510 [sender.py:send():378] send: summary
+2024-05-27 01:00:45,064 INFO    SenderThread:39510 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-27 01:00:45,064 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:45,064 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-05-27 01:00:45,064 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 6
+2024-05-27 01:00:45,064 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:45,064 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 6
+2024-05-27 01:00:45,064 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:45,064 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-05-27 01:00:45,066 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: status_report
+2024-05-27 01:00:45,308 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 7
+2024-05-27 01:00:45,308 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:45,308 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 7
+2024-05-27 01:00:45,308 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:45,309 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-05-27 01:00:45,576 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/config.yaml
+2024-05-27 01:00:45,576 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/wandb-summary.json
+2024-05-27 01:00:46,011 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 8
+2024-05-27 01:00:46,011 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:46,011 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 8
+2024-05-27 01:00:46,011 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:46,012 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-05-27 01:00:46,012 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 9
+2024-05-27 01:00:46,012 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:46,012 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 9
+2024-05-27 01:00:46,012 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:46,012 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-05-27 01:00:46,012 INFO    SenderThread:39510 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-05-27 01:00:46,019 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-27 01:00:46,576 INFO    Thread-12 :39510 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:46,577 INFO    SenderThread:39510 [dir_watcher.py:finish():388] scan: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files
+2024-05-27 01:00:46,577 INFO    SenderThread:39510 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/conda-environment.yaml conda-environment.yaml
+2024-05-27 01:00:46,577 INFO    SenderThread:39510 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log output.log
+2024-05-27 01:00:46,577 INFO    SenderThread:39510 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/config.yaml config.yaml
+2024-05-27 01:00:46,581 INFO    SenderThread:39510 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/requirements.txt requirements.txt
+2024-05-27 01:00:46,582 INFO    SenderThread:39510 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/wandb-metadata.json wandb-metadata.json
+2024-05-27 01:00:46,583 INFO    SenderThread:39510 [dir_watcher.py:finish():402] scan save: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/wandb-summary.json wandb-summary.json
+2024-05-27 01:00:46,583 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 10
+2024-05-27 01:00:46,583 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: poll_exit
+2024-05-27 01:00:46,583 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:46,583 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 10
+2024-05-27 01:00:46,583 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:46,583 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-05-27 01:00:46,583 INFO    SenderThread:39510 [file_pusher.py:finish():169] shutting down file pusher
+2024-05-27 01:00:47,020 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-27 01:00:47,020 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: poll_exit
+2024-05-27 01:00:47,048 INFO    wandb-upload_0:39510 [upload_job.py:push():130] Uploaded file /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/output.log
+2024-05-27 01:00:47,049 INFO    wandb-upload_4:39510 [upload_job.py:push():130] Uploaded file /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/wandb-summary.json
+2024-05-27 01:00:47,049 INFO    wandb-upload_1:39510 [upload_job.py:push():130] Uploaded file /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/conda-environment.yaml
+2024-05-27 01:00:47,151 INFO    wandb-upload_2:39510 [upload_job.py:push():130] Uploaded file /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/config.yaml
+2024-05-27 01:00:47,560 INFO    wandb-upload_3:39510 [upload_job.py:push():130] Uploaded file /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/files/requirements.txt
+2024-05-27 01:00:47,761 INFO    Thread-11 (_thread_body):39510 [sender.py:transition_state():613] send defer: 11
+2024-05-27 01:00:47,761 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:47,761 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 11
+2024-05-27 01:00:47,762 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:47,762 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-05-27 01:00:47,762 INFO    SenderThread:39510 [file_pusher.py:join():175] waiting for file pusher
+2024-05-27 01:00:47,762 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 12
+2024-05-27 01:00:47,762 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:47,762 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 12
+2024-05-27 01:00:47,763 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:47,763 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-05-27 01:00:47,763 INFO    SenderThread:39510 [file_stream.py:finish():601] file stream finish called
+2024-05-27 01:00:47,970 INFO    SenderThread:39510 [file_stream.py:finish():605] file stream finish is done
+2024-05-27 01:00:47,970 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 13
+2024-05-27 01:00:47,970 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:47,970 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 13
+2024-05-27 01:00:47,970 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:47,970 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-05-27 01:00:47,970 INFO    SenderThread:39510 [sender.py:transition_state():613] send defer: 14
+2024-05-27 01:00:47,970 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: defer
+2024-05-27 01:00:47,971 INFO    HandlerThread:39510 [handler.py:handle_request_defer():184] handle defer: 14
+2024-05-27 01:00:47,971 DEBUG   SenderThread:39510 [sender.py:send():378] send: final
+2024-05-27 01:00:47,971 DEBUG   SenderThread:39510 [sender.py:send():378] send: footer
+2024-05-27 01:00:47,971 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: defer
+2024-05-27 01:00:47,971 INFO    SenderThread:39510 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-05-27 01:00:47,972 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-27 01:00:47,972 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: poll_exit
+2024-05-27 01:00:47,973 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: internal_messages
+2024-05-27 01:00:47,973 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: server_info
+2024-05-27 01:00:47,973 DEBUG   SenderThread:39510 [sender.py:send_request():405] send_request: server_info
+2024-05-27 01:00:48,015 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: get_summary
+2024-05-27 01:00:48,015 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: sampled_history
+2024-05-27 01:00:48,175 DEBUG   HandlerThread:39510 [handler.py:handle_request():158] handle_request: shutdown
+2024-05-27 01:00:48,176 INFO    HandlerThread:39510 [handler.py:finish():882] shutting down handler
+2024-05-27 01:00:48,973 INFO    WriterThread:39510 [datastore.py:close():296] close: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240527_005826-x2jpmatv/run-x2jpmatv.wandb
+2024-05-27 01:00:49,175 INFO    SenderThread:39510 [sender.py:finish():1545] shutting down sender
+2024-05-27 01:00:49,175 INFO    SenderThread:39510 [file_pusher.py:finish():169] shutting down file pusher
+2024-05-27 01:00:49,175 INFO    SenderThread:39510 [file_pusher.py:join():175] waiting for file pusher

@@ -1,0 +1,8 @@
+wandb_version: 1
+
+dropout_p:
+  value: 0.1
+epochs:
+  value: 50
+lr:
+  value: 0.01

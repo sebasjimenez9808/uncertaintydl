@@ -1,0 +1,8 @@
+wandb_version: 1
+
+epochs:
+  value: 100
+lr:
+  value: 0.01
+models:
+  value: 100

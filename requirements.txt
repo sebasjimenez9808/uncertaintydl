@@ -4,4 +4,7 @@ torchaudio==2.1.2
 jupyter==1.0.0
 pymc==5.10.3
 jax==0.4.23
-numpyro==0.13.2
+hamiltorch @ git+https://github.com/AdamCobb/hamiltorch
+laplace-torch==0.1a2
+wandb==0.17.0
+pyro-ppl==1.9.1

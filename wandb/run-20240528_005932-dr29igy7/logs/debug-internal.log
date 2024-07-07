@@ -1,0 +1,118 @@
+2024-05-28 00:59:32,323 INFO    StreamThr :52072 [internal.py:wandb_internal():85] W&B internal server running at pid: 52072, started at: 2024-05-28 00:59:32.322845
+2024-05-28 00:59:32,326 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: status
+2024-05-28 00:59:32,333 INFO    WriterThread:52072 [datastore.py:open_for_write():87] open: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/run-dr29igy7.wandb
+2024-05-28 00:59:32,333 DEBUG   SenderThread:52072 [sender.py:send():378] send: header
+2024-05-28 00:59:32,339 DEBUG   SenderThread:52072 [sender.py:send():378] send: run
+2024-05-28 00:59:32,674 INFO    SenderThread:52072 [dir_watcher.py:__init__():211] watching files in: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files
+2024-05-28 00:59:32,674 INFO    SenderThread:52072 [sender.py:_start_run_threads():1123] run started: dr29igy7 with start time 1716850772.322002
+2024-05-28 00:59:32,687 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: check_version
+2024-05-28 00:59:32,687 DEBUG   SenderThread:52072 [sender.py:send_request():405] send_request: check_version
+2024-05-28 00:59:32,802 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: run_start
+2024-05-28 00:59:33,514 ERROR   HandlerThread:52072 [gpu.py:is_available():381] Error initializing NVML: Driver Not Loaded
+2024-05-28 00:59:33,515 DEBUG   HandlerThread:52072 [system_info.py:__init__():26] System info init
+2024-05-28 00:59:33,515 DEBUG   HandlerThread:52072 [system_info.py:__init__():41] System info init done
+2024-05-28 00:59:33,515 INFO    HandlerThread:52072 [system_monitor.py:start():194] Starting system monitor
+2024-05-28 00:59:33,515 INFO    SystemMonitor:52072 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-28 00:59:33,516 INFO    HandlerThread:52072 [system_monitor.py:probe():214] Collecting system info
+2024-05-28 00:59:33,517 INFO    SystemMonitor:52072 [interfaces.py:start():188] Started cpu monitoring
+2024-05-28 00:59:33,518 INFO    SystemMonitor:52072 [interfaces.py:start():188] Started disk monitoring
+2024-05-28 00:59:33,519 INFO    SystemMonitor:52072 [interfaces.py:start():188] Started memory monitoring
+2024-05-28 00:59:33,521 INFO    SystemMonitor:52072 [interfaces.py:start():188] Started network monitoring
+2024-05-28 00:59:33,535 DEBUG   HandlerThread:52072 [system_info.py:probe():150] Probing system
+2024-05-28 00:59:33,539 DEBUG   HandlerThread:52072 [system_info.py:_probe_git():135] Probing git
+2024-05-28 00:59:33,550 DEBUG   HandlerThread:52072 [system_info.py:_probe_git():143] Probing git done
+2024-05-28 00:59:33,550 DEBUG   HandlerThread:52072 [system_info.py:probe():198] Probing system done
+2024-05-28 00:59:33,550 DEBUG   HandlerThread:52072 [system_monitor.py:probe():223] {'os': 'Linux-6.6.10-76060610-generic-x86_64-with-glibc2.35', 'python': '3.11.7', 'heartbeatAt': '2024-05-27T22:59:33.536057', 'startedAt': '2024-05-27T22:59:32.312320', 'docker': None, 'cuda': None, 'args': ('--mode=client', '--host=127.0.0.1', '--port=42121'), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'git': {'remote': 'https://github.com/sebasjimenez9808/uncertaintydl.git', 'commit': '3fb11525cb3bb9b8cdf83fe57efe0551a12be648'}, 'email': 'sebasjimenez9808@gmail.com', 'root': '/home/sebas/projectsPersonal/Learning/Thesis/ThesisCode', 'host': 'pop-os', 'username': 'sebas', 'executable': '/home/sebas/anaconda3/envs/pytorch_env/bin/python', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 1902.9869375000003, 'min': 1400.0, 'max': 2900.0}, 'cpu_freq_per_core': [{'current': 1397.271, 'min': 1400.0, 'max': 2900.0}, {'current': 1400.0, 'min': 1400.0, 'max': 2900.0}, {'current': 1496.567, 'min': 1400.0, 'max': 2900.0}, {'current': 1400.0, 'min': 1400.0, 'max': 2900.0}, {'current': 1395.772, 'min': 1400.0, 'max': 2900.0}, {'current': 1396.674, 'min': 1400.0, 'max': 2900.0}, {'current': 1397.519, 'min': 1400.0, 'max': 2900.0}, {'current': 1513.015, 'min': 1400.0, 'max': 2900.0}, {'current': 1397.155, 'min': 1400.0, 'max': 2900.0}, {'current': 2039.767, 'min': 1400.0, 'max': 2900.0}, {'current': 1397.311, 'min': 1400.0, 'max': 2900.0}, {'current': 1397.214, 'min': 1400.0, 'max': 2900.0}, {'current': 1397.079, 'min': 1400.0, 'max': 2900.0}, {'current': 1396.8, 'min': 1400.0, 'max': 2900.0}, {'current': 1454.88, 'min': 1400.0, 'max': 2900.0}, {'current': 1395.671, 'min': 1400.0, 'max': 2900.0}], 'disk': {'/': {'total': 459.5024719238281, 'used': 112.4019775390625}}, 'memory': {'total': 14.993942260742188}}
+2024-05-28 00:59:33,550 INFO    HandlerThread:52072 [system_monitor.py:probe():224] Finished collecting system info
+2024-05-28 00:59:33,550 INFO    HandlerThread:52072 [system_monitor.py:probe():227] Publishing system info
+2024-05-28 00:59:33,550 DEBUG   HandlerThread:52072 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-05-28 00:59:33,675 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/conda-environment.yaml
+2024-05-28 00:59:36,022 DEBUG   HandlerThread:52072 [system_info.py:_save_conda():222] Saving conda packages done
+2024-05-28 00:59:36,022 INFO    HandlerThread:52072 [system_monitor.py:probe():229] Finished publishing system info
+2024-05-28 00:59:36,025 DEBUG   SenderThread:52072 [sender.py:send():378] send: files
+2024-05-28 00:59:36,025 INFO    SenderThread:52072 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-05-28 00:59:36,156 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: python_packages
+2024-05-28 00:59:36,156 DEBUG   SenderThread:52072 [sender.py:send_request():405] send_request: python_packages
+2024-05-28 00:59:36,156 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 00:59:36,157 DEBUG   SenderThread:52072 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 00:59:36,363 DEBUG   SenderThread:52072 [sender.py:send():378] send: telemetry
+2024-05-28 00:59:36,586 INFO    wandb-upload_0:52072 [upload_job.py:push():130] Uploaded file /tmp/tmpkfdxbx7dwandb/358ofn5h-wandb-metadata.json
+2024-05-28 00:59:36,676 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/conda-environment.yaml
+2024-05-28 00:59:36,676 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:36,676 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/requirements.txt
+2024-05-28 00:59:36,676 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_created():271] file/dir created: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/wandb-metadata.json
+2024-05-28 00:59:37,375 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 00:59:38,676 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:40,676 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:42,476 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 00:59:42,677 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:44,677 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:46,678 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:47,556 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 00:59:48,678 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:50,679 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:51,156 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-28 00:59:51,157 DEBUG   SenderThread:52072 [sender.py:send_request():405] send_request: stop_status
+2024-05-28 00:59:52,491 ERROR   FileStreamThread:52072 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/sebasjimenez/Thesis/dr29igy7/file_stream
+NoneType: None
+2024-05-28 00:59:52,570 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 00:59:52,682 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:54,530 ERROR   FileStreamThread:52072 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/sebasjimenez/Thesis/dr29igy7/file_stream
+NoneType: None
+2024-05-28 00:59:54,680 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:56,577 ERROR   FileStreamThread:52072 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/sebasjimenez/Thesis/dr29igy7/file_stream
+NoneType: None
+2024-05-28 00:59:56,681 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 00:59:57,598 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 00:59:58,525 ERROR   FileStreamThread:52072 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/sebasjimenez/Thesis/dr29igy7/file_stream
+NoneType: None
+2024-05-28 00:59:58,681 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 01:00:00,571 ERROR   FileStreamThread:52072 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/sebasjimenez/Thesis/dr29igy7/file_stream
+NoneType: None
+2024-05-28 01:00:00,682 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 01:00:02,519 ERROR   FileStreamThread:52072 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/sebasjimenez/Thesis/dr29igy7/file_stream
+NoneType: None
+2024-05-28 01:00:02,633 DEBUG   HandlerThread:52072 [handler.py:handle_request():158] handle_request: status_report
+2024-05-28 01:00:02,682 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 01:00:02,824 ERROR   SenderThread:52072 [internal_api.py:execute():344] 409 response executing GraphQL.
+2024-05-28 01:00:02,824 ERROR   SenderThread:52072 [internal_api.py:execute():345] {"errors":[{"message":"run dr29igy7 was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2024-05-28 01:00:04,053 ERROR   SenderThread:52072 [internal_api.py:execute():344] 409 response executing GraphQL.
+2024-05-28 01:00:04,053 ERROR   SenderThread:52072 [internal_api.py:execute():345] {"errors":[{"message":"run dr29igy7 was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2024-05-28 01:00:04,565 ERROR   FileStreamThread:52072 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/sebasjimenez/Thesis/dr29igy7/file_stream
+NoneType: None
+2024-05-28 01:00:04,683 INFO    Thread-12 :52072 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/files/output.log
+2024-05-28 01:00:05,330 WARNING StreamThr :52072 [internal.py:is_dead():413] Internal process exiting, parent pid 51853 disappeared
+2024-05-28 01:00:05,331 ERROR   StreamThr :52072 [internal.py:wandb_internal():151] Internal process shutdown.
+2024-05-28 01:00:05,530 INFO    memory    :52072 [interfaces.py:monitor():138] Process proc.memory.rssMB has exited.
+2024-05-28 01:00:05,530 DEBUG   SystemMonitor:52072 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-28 01:00:05,530 DEBUG   SystemMonitor:52072 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-28 01:00:05,530 DEBUG   SystemMonitor:52072 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-28 01:00:05,531 INFO    HandlerThread:52072 [handler.py:finish():882] shutting down handler
+2024-05-28 01:00:05,532 INFO    WriterThread:52072 [datastore.py:close():296] close: /home/sebas/projectsPersonal/Learning/Thesis/ThesisCode/wandb/run-20240528_005932-dr29igy7/run-dr29igy7.wandb
+2024-05-28 01:00:05,532 INFO    HandlerThread:52072 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-28 01:00:05,532 INFO    HandlerThread:52072 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-28 01:00:05,532 INFO    HandlerThread:52072 [interfaces.py:finish():200] Joined disk monitor
+2024-05-28 01:00:05,532 INFO    HandlerThread:52072 [interfaces.py:finish():200] Joined memory monitor
+2024-05-28 01:00:05,533 INFO    HandlerThread:52072 [interfaces.py:finish():200] Joined network monitor
+2024-05-28 01:00:06,613 ERROR   SenderThread:52072 [internal_api.py:execute():344] 409 response executing GraphQL.
+2024-05-28 01:00:06,613 ERROR   SenderThread:52072 [internal_api.py:execute():345] {"errors":[{"message":"run dr29igy7 was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2024-05-28 01:00:06,614 INFO    SenderThread:52072 [retry.py:__call__():172] Retry attempt failed:
+Traceback (most recent call last):
+  File "/home/sebas/anaconda3/envs/pytorch_env/lib/python3.11/site-packages/wandb/sdk/lib/retry.py", line 131, in __call__
+    result = self._call_fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sebas/anaconda3/envs/pytorch_env/lib/python3.11/site-packages/wandb/sdk/internal/internal_api.py", line 340, in execute
+    return self.client.execute(*args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sebas/anaconda3/envs/pytorch_env/lib/python3.11/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sebas/anaconda3/envs/pytorch_env/lib/python3.11/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sebas/anaconda3/envs/pytorch_env/lib/python3.11/site-packages/wandb/sdk/lib/gql_request.py", line 59, in execute
+    request.raise_for_status()
+  File "/home/sebas/anaconda3/envs/pytorch_env/lib/python3.11/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 409 Client Error: Conflict for url: https://api.wandb.ai/graphql
+2024-05-28 01:00:06,808 INFO    MainThread:52072 [internal.py:handle_exit():75] Internal process exited
