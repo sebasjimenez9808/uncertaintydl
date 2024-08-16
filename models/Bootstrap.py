@@ -87,7 +87,7 @@ class BootstrapEnsemble(EvaluationModel):
             data_loader_by_model[index] = DataLoader(
                 data_utils.TensorDataset(bootstrap_sample.x[index, :].unsqueeze(-1),
                                          bootstrap_sample.y[index, :].unsqueeze(-1)),
-                batch_size=batch_size, shuffle=True)
+                batch_size=320, shuffle=True)
         return data_loader_by_model
 
     def get_optimizer(self, lr: float):
