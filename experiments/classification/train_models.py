@@ -17,8 +17,8 @@ params = copy.deepcopy(model_params_template_information)
 def main():
     parser = argparse.ArgumentParser(description="Train and evaluate a classification model.")
 
-    model_vi = train_and_test_model("variational", **params)
-    save_json_model(params, model_vi,  'variational', problem='classification')
+    # model_vi = train_and_test_model("variational", **params)
+    # save_json_model(params, model_vi,  'variational', problem='classification')
 
     #model = read_json_file(get_model_filename(model_type='variational', config=params, problem='classification'))
     #plot_predictions_with_uncertainty(model=model, filename='variational.png', title='Variational')

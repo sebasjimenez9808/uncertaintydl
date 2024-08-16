@@ -11,7 +11,7 @@ from models.base_model import RegressionMLP, EvaluationModel
 from utilities.data_generation import BootstrapDataset, RegressionData
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-import wandb
+#import wandb
 import torch.utils.data as data_utils
 
 
@@ -107,6 +107,7 @@ class BootstrapEnsemble(EvaluationModel):
         self.activate_wandb()
 
         for i, model in enumerate(tqdm(self.models)):
+            model.to('cuda')
             mse_this_model = []
             loss_this_model = []
             for epoch in range(n_epochs):
