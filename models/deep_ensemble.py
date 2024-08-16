@@ -1,6 +1,6 @@
 from tqdm import tqdm
-from models.base_model import RegressionMLP
-from utils.data_generation import RegressionData
+from models.base_model import RegressionMLP, EvaluationModel
+from utilities.data_generation import RegressionData
 from torch.utils.data import DataLoader
 import torch
 import numpy as np
@@ -9,7 +9,7 @@ import wandb
 import torch.utils.data as data_utils
 
 
-class DeepEnsemble(RegressionMLP):
+class DeepEnsemble(EvaluationModel):
     def __init__(self, input_dim: int, hidden_dim: int, output_dim: int,
                  reg_fct: callable, n_samples: int = 1000, test_n_samples: int = 1000,
                  n_hidden: int = 4, n_models: int = 100,
@@ -17,20 +17,23 @@ class DeepEnsemble(RegressionMLP):
                  heteroscedastic: bool = False,
                  resample: bool = False, problem: str = 'regression',
                  test_interval: tuple = (-5, 5), train_interval: tuple = (-3, 3),
+                 seed: int = 42, add_sigmoid: bool = False,
                  **kwargs):
-        super().__init__(input_dim, hidden_dim, output_dim, n_hidden, seed=42)
         self.test_mse = None
         self.standard_deviation_predictions = None
         self.variance_predictions = None
         self.mean_predictions = None
         self.n_models = n_models
-        self.models = [RegressionMLP(input_dim, hidden_dim, output_dim,
-                                     n_hidden, seed=_ + 42) for _ in range(n_models)]
+        self.models = [RegressionMLP(input_dim=input_dim, hidden_dim=hidden_dim,
+                                     output_dim=output_dim, n_hidden=n_hidden,
+                                     add_sigmoid=add_sigmoid, seed=seed + _) for _ in range(n_models)]
         self.data_set = RegressionData(reg_fct, n_samples=n_samples, test_n_samples=test_n_samples,
                                        heteroscedastic=heteroscedastic,
                                        test_interval=test_interval,
                                        train_interval=train_interval,
                                        problem=problem)
+        self.add_sigmoid = add_sigmoid
+        self.problem = problem
         self.output_dim = output_dim
         self.model_loss = None
         self.n_samples = n_samples
@@ -40,8 +43,9 @@ class DeepEnsemble(RegressionMLP):
         self.resample = resample
         self.reg_fct = reg_fct
         self.heteroscadastic = heteroscedastic
-        self.test_interval = (-5, 5)
-        self.train_interval = (-3, 3)
+        self.test_interval = test_interval
+        self.train_interval = train_interval
+        self.training_time = None
 
 
     def activate_wandb(self):
@@ -68,7 +72,6 @@ class DeepEnsemble(RegressionMLP):
 
     def get_sample_loader(self, batch_size: int, resample: bool = False):
         data_loader_by_model = {}
-        # set seed 123
 
         for index, model in enumerate(self.models):
             torch.manual_seed(123 + index)
@@ -76,7 +79,9 @@ class DeepEnsemble(RegressionMLP):
                 new_data_set = RegressionData(self.reg_fct, n_samples=self.n_samples,
                                               heteroscedastic=self.heteroscadastic,
                                               test_interval=self.test_interval,
-                                              train_interval=self.train_interval)
+                                              train_interval=self.train_interval,
+                                              seed=42 + index,
+                                              problem=self.problem)
                 shuffle_index = torch.randperm(len(new_data_set.train_data.y))
                 shuffle_data = copy.deepcopy(new_data_set.train_data)
             else:
@@ -104,10 +109,10 @@ class DeepEnsemble(RegressionMLP):
 
         loss_by_epoch = []
         mse_by_epoch = []
-        for epoch in range(n_epochs):
+        for epoch in tqdm(range(n_epochs)):
             loss_this_epoch = []
             mse_this_epoch = []
-            for i, model in enumerate(tqdm(self.models)):
+            for i, model in enumerate(self.models):
                 loss_this_model = []
                 mse_this_model = []
                 for x, y in data_loader[i]:

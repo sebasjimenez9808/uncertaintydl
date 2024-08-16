@@ -8,3 +8,5 @@ hamiltorch @ git+https://github.com/AdamCobb/hamiltorch
 laplace-torch==0.1a2
 wandb==0.17.0
 pyro-ppl==1.9.1
+plotly==5.22.0
+kaleido==0.2.1

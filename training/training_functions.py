@@ -1,5 +1,5 @@
 from models.Bootstrap import BootstrapEnsemble
-from models.LaplaceApprox import LaplaceReg
+from models.laplace_scratch import LaplaceReg
 from models.MCDropout import MCDropoutNet
 from models.MCMCHamiltorch import MCMCReg
 from models.deep_ensemble import DeepEnsemble

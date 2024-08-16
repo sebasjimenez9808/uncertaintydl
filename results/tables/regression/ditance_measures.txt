@@ -1,0 +1,19 @@
+\begin{table}[H] 
+ \centering 
+ \begin{tabular}{l|cccccc} \toprule 
+Model & VI & LA & HMC & Deep Ensemble & MC Dropout & Bootstrap \\ 
+ \midrule 
+KL Divergence  & 0.58 & 0.57 & 6.06 & 1.28 & 321537926.78 & 1854.09 \\ 
+KL Divergence  In & 0.52 & 0.47 & 0.71 & 0.69 & 60210.30 & 13.74 \\ 
+KL Divergence  Out & 0.84 & 0.95 & 26.19 & 3.50 & 1530906479.25 & 8777.32 \\ 
+Wasserstein-1  & 1.74 & 1.91 & 10.13 & 3.06 & 53353.52 & 180.82 \\ 
+Wasserstein-1  In & 1.14 & 1.21 & 1.77 & 1.21 & 121.71 & 3.71 \\ 
+Wasserstein-1  Out & 3.98 & 4.60 & 41.75 & 10.04 & 250454.74 & 838.76 \\ 
+NIP-G  & 0.95 & 0.89 & 0.69 & 0.77 & 0.42 & 0.61 \\ 
+NIP-G  In & 0.94 & 0.93 & 0.92 & 0.90 & 0.11 & 0.51 \\ 
+NIP-G  Out & 0.98 & 0.86 & 0.85 & 0.83 & 0.59 & 0.85 \\ 
+\bottomrule 
+ \end{tabular} 
+ \caption{Quality Evaluation} 
+ \label{tab:my_label} 
+ \end{table}

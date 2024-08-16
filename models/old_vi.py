@@ -3,12 +3,13 @@ from dataclasses import dataclass
 import numpy as np
 import torch
 from torch import nn
-import matplotlib.pyplot as plt
-from scipy.stats import norm, bernoulli
+import time
 import torch.distributions as dist
+from torch.utils.data import DataLoader
 from tqdm import tqdm
 import torch.nn.functional as F
-from utils.data_generation import RegressionData
+from utilities.data_generation import RegressionData
+import torch.utils.data as data_utils
 
 
 class LinearVariational(nn.Module):
@@ -48,6 +49,7 @@ class LinearVariational(nn.Module):
             )
 
     def reparameterize(self, mu, p):
+        torch.manual_seed(int(time.time() * 1000))
         sigma = torch.log(1 + torch.exp(p))
         eps = torch.randn_like(sigma)
         return mu + (eps * sigma)
@@ -55,7 +57,7 @@ class LinearVariational(nn.Module):
     def kl_divergence(self, z, mu_theta, p_theta, prior_sd=1):
         log_prior = dist.Normal(0, prior_sd).log_prob(z)
         log_p_q = dist.Normal(mu_theta, torch.log(1 + torch.exp(p_theta))).log_prob(z)
-        return (log_p_q - log_prior).sum() / self.n_batches
+        return (log_p_q - log_prior).mean() / self.n_batches
 
     def forward(self, x):
         w = self.reparameterize(self.w_mu, self.w_p)
@@ -93,29 +95,32 @@ class VIModel(nn.Module):
                  test_interval: tuple = (-5, 5),
                  train_interval: tuple = (-3, 3),
                  heteroscedastic: bool = False,
-                 problem: str = 'regression'):
+                 problem: str = 'regression',
+                 seed: int = 42, add_sigmoid: bool = False):
         super().__init__()
+        torch.manual_seed(seed)
         self.epistemic_uncertainty = None
         self.aleatoric_uncertainty = None
         self.mean_predictions = None
         self.kl_loss = KL
         self.n_batches = int(n_samples / 32)
+        sequential_layers = [LinearVariational(input_dim, hidden_dim, self.kl_loss, self.n_batches),
+                             nn.ReLU()]
+        for _ in range(n_hidden):
+            sequential_layers.extend([LinearVariational(hidden_dim, hidden_dim, self.kl_loss, self.n_batches),
+                                      nn.ReLU()])
+        sequential_layers.append(LinearVariational(hidden_dim, output_dim, self.kl_loss, self.n_batches))
+        if add_sigmoid:
+            sequential_layers.append(nn.Sigmoid())
         self.layers = nn.Sequential(
-            LinearVariational(input_dim, hidden_dim, self.kl_loss, self.n_batches),
-            nn.ReLU(),
-            LinearVariational(hidden_dim, hidden_dim, self.kl_loss, self.n_batches),
-            nn.ReLU(),
-        #     LinearVariational(hidden_dim, hidden_dim, self.kl_loss, self.n_batches),
-        # nn.ReLU(),
-        # LinearVariational(hidden_dim, hidden_dim, self.kl_loss, self.n_batches),
-        #     nn.ReLU(),
-            LinearVariational(hidden_dim, output_dim, self.kl_loss, self.n_batches)
+            *sequential_layers
         )
         self.data_set = RegressionData(reg_fct, n_samples=n_samples, test_n_samples=test_n_samples,
                                        train_interval=train_interval, test_interval=test_interval,
                                        heteroscedastic=heteroscedastic,
                                        problem=problem)
         self.n_samples_predictions = n_samples_predictions
+        self.training_time = None
 
     @property
     def accumulated_kl_div(self):
@@ -134,14 +139,23 @@ class VIModel(nn.Module):
 
     def train_model(self, loss_fct: callable, n_epochs: int = 100, batch_size: int = 32, lr: float = 0.01):
         optim = torch.optim.Adam(self.parameters(), lr=lr)
+        self.data_loader = DataLoader(data_utils.TensorDataset(self.data_set.train_data.x.unsqueeze(-1),
+                                                               self.data_set.train_data.y.unsqueeze(-1)),
+                                      batch_size=batch_size)
 
         for epoch in tqdm(range(n_epochs)):
-            optim.zero_grad()
-            y_pred = self(self.data_set.train_data.x.unsqueeze(1))
-            loss = self.loss_function(y_pred=y_pred, y=self.data_set.train_data.y.unsqueeze(1),
-                                      loss_fct=loss_fct)
-            loss.backward()
-            optim.step()
+            for x, y in self.data_loader:
+                optim.zero_grad()
+                y_pred = self(x)
+                loss = self.loss_function(y_pred=y_pred, y=y, loss_fct=loss_fct)
+                loss.backward()
+                optim.step()
+            # optim.zero_grad()
+            # y_pred = self(self.data_set.train_data.x.unsqueeze(1))
+            # loss = self.loss_function(y_pred=y_pred, y=self.data_set.train_data.y.unsqueeze(1),
+            #                           loss_fct=loss_fct)
+            # loss.backward()
+            # optim.step()
 
     def make_predictions_on_test(self):
         mean_predictions = []
@@ -245,7 +259,7 @@ class VIModel(nn.Module):
         predictions_mean_class_zero = torch.mean(prediction_class_zero, dim=0)
 
         self.total_entropy = -(predictions_mean * torch.log(predictions_mean) +
-                                   predictions_mean_class_zero * torch.log(predictions_mean_class_zero))
+                               predictions_mean_class_zero * torch.log(predictions_mean_class_zero))
 
         self.epistemic_entropy = self.total_entropy - self.aleatoric_entropy
 

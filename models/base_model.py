@@ -2,24 +2,16 @@ import torch
 import torch.nn as nn
 import numpy as np
 import torch.nn.functional as F
+import time
 
 
-class RegressionMLP(nn.Module):
-    def __init__(self, input_dim: int, hidden_dim: int, output_dim: int = 1, n_hidden: int = 1,
-                 seed: int = 42):
-        super().__init__()
-        torch.manual_seed(seed)
-        self.fc1 = nn.Linear(input_dim, hidden_dim)
-        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        #        self.fc3 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc_mu = nn.Linear(hidden_dim, output_dim)
-
-    def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        x = torch.relu(self.fc2(x))
-        #        x = torch.relu(self.fc3(x))
-        pred = self.fc_mu(x)
-        return pred
+class EvaluationModel:
+    def __init__(self):
+        self.mean_predictions = None
+        self.predictions = None
+        self.epistemic_entropy = None
+        self.total_entropy = None
+        self.aleatoric_entropy = None
 
     def get_accuracy(self, y_values, predictions, stacked: bool = False):
         if not stacked:
@@ -94,3 +86,30 @@ class RegressionMLP(nn.Module):
 
         self.predictions = predictions
         self.mean_predictions = predictions_mean
+
+
+class RegressionMLP(nn.Module, EvaluationModel):
+    def __init__(self, input_dim: int, hidden_dim: int, output_dim: int = 1, n_hidden: int = 1,
+                 seed: int = 42, add_sigmoid: bool = False, add_dropout: bool = False,
+                 dropout_rate: float = 0.5):
+        super().__init__()
+        torch.manual_seed(seed)
+        self.add_dropout = add_dropout
+        sequential_layers = [nn.Linear(input_dim, hidden_dim), nn.ReLU()]
+        for i in range(n_hidden):
+            sequential_layers.append(nn.Linear(hidden_dim, hidden_dim))
+            sequential_layers.append(nn.ReLU())
+            if add_dropout:
+                sequential_layers.append(nn.Dropout(dropout_rate))
+
+        sequential_layers.append(nn.Linear(hidden_dim, output_dim))
+        if add_sigmoid:
+            sequential_layers.append(nn.Sigmoid())
+        self.model = nn.Sequential(*sequential_layers)
+
+    def forward(self, x):
+        if self.add_dropout:
+            # add randomness to dropout layers
+            torch.manual_seed(int(time.time() * 1000))
+        x = self.model(x)
+        return x

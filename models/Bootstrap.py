@@ -1,16 +1,21 @@
+import sys
+import os
+conf_path = os.getcwd()
+print(conf_path)
+sys.path.append(conf_path)
 import torch
 import torch.nn as nn
 import numpy as np
 
-from models.base_model import RegressionMLP
-from utils.data_generation import BootstrapDataset, RegressionData
+from models.base_model import RegressionMLP, EvaluationModel
+from utilities.data_generation import BootstrapDataset, RegressionData
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 import wandb
 import torch.utils.data as data_utils
 
 
-class BootstrapEnsemble(RegressionMLP):
+class BootstrapEnsemble(EvaluationModel):
     def __init__(self, input_dim: int, hidden_dim: int, output_dim: int,
                  reg_fct: callable,
                  n_hidden: int = 4, n_models: int = 100,
@@ -22,9 +27,8 @@ class BootstrapEnsemble(RegressionMLP):
                  test_interval: tuple = (-5, 5),
                  train_interval: tuple = (-3, 3),
                  problem: str = 'regression',
+                 add_sigmoid: bool = False, seed: int = 42,
                  **kwargs):
-        super().__init__(input_dim, hidden_dim, output_dim, n_hidden)
-
         self.total_uncertainty = None
         self.aleatoric_uncertainty = None
         self.epistemic_uncertainty = None
@@ -35,7 +39,9 @@ class BootstrapEnsemble(RegressionMLP):
         self.mean_predictions = None
         self.n_models = n_models
         self.bootstrap_size = bootstrap_size
-        self.models = [RegressionMLP(input_dim, hidden_dim, output_dim, n_hidden) for _ in range(n_models)]
+        self.models = [RegressionMLP(input_dim=input_dim, hidden_dim=hidden_dim,
+                                     output_dim=output_dim, n_hidden=n_hidden,
+                                     add_sigmoid=add_sigmoid, seed=seed + _) for _ in range(n_models)]
         self.data_set = RegressionData(reg_fct, n_samples=n_samples, test_n_samples=test_n_samples,
                                        heteroscedastic=heteroscedastic,
                                        test_interval=test_interval,
@@ -48,6 +54,7 @@ class BootstrapEnsemble(RegressionMLP):
         self.n_samples = n_samples
         self.wandb_active = wandb_active
         self.output_dim = output_dim
+        self.training_time = None
 
     def activate_wandb(self):
         if self.wandb_active:

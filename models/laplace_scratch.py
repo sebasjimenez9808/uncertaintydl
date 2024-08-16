@@ -1,19 +1,21 @@
-from models.base_model import RegressionMLP
-from utils.data_generation import RegressionData
+from models.base_model import RegressionMLP, EvaluationModel
+from utilities.data_generation import RegressionData
 import numpy as np
 from torch.utils.data import DataLoader
 import torch.utils.data as data_utils
 import torch
 
 
-class LaplaceReg(RegressionMLP):
+class LaplaceReg(EvaluationModel):
     def __init__(self, input_dim: int, hidden_dim: int, output_dim: int,
                  reg_fct: callable, n_hidden: int = 4, n_samples: int = 1000,
                  test_n_samples: int = 1000, wandb_active: bool = False,
                  heteroscedastic: bool = False, train_interval: tuple = (-2, 2),
-                 test_interval: tuple = (-3, 3), problem: str = 'regression'):
-        super().__init__(input_dim=input_dim, hidden_dim=hidden_dim,
-                         output_dim=output_dim, n_hidden=n_hidden)
+                 test_interval: tuple = (-3, 3), problem: str = 'regression',
+                 add_sigmoid: bool = False, seed: int = 42, num_samples=1000):
+        self.base_model = RegressionMLP(input_dim=input_dim, hidden_dim=hidden_dim,
+                                        output_dim=output_dim, n_hidden=n_hidden,
+                                        add_sigmoid=add_sigmoid, seed=seed)
         self.epistemic_uncertainty = None
         self.aleatoric_uncertainty = None
         self.data_loader = None
@@ -35,17 +37,14 @@ class LaplaceReg(RegressionMLP):
                                        test_interval=test_interval, train_interval=train_interval,
                                        problem=problem, heteroscedastic=heteroscedastic)
         self.reg_fct = reg_fct
-
         self.model_loss = None
-
-        self.sequential_model = torch.nn.Sequential(
-            self.fc1, torch.nn.Tanh(), self.fc2,
-            torch.nn.Tanh(), self.fc_mu)
         self.wandb_active = wandb_active
+        self.num_samples = num_samples
+        self.training_time = None
 
     def train_map(self, loss_fct: callable, n_epochs: int = 100, lr: float = 0.01,
                   batch_size: int = 32):
-        optimizer = torch.optim.Adam(self.sequential_model.parameters(), lr=lr)
+        optimizer = torch.optim.Adam(self.base_model.parameters(), lr=lr)
         # self.data_loader = DataLoader(self.data_set.train_data, batch_size=batch_size)
         self.data_loader = DataLoader(data_utils.TensorDataset(self.data_set.train_data.x.unsqueeze(-1),
                                                                self.data_set.train_data.y.unsqueeze(-1)),
@@ -57,7 +56,7 @@ class LaplaceReg(RegressionMLP):
                 x = x.float()
                 y = y.float()
                 optimizer.zero_grad()
-                pred = self.sequential_model(x)
+                pred = self.base_model(x)
                 loss = loss_fct(pred, y)
                 loss.backward()
                 loss_this_epoch.append(loss.item())
@@ -69,9 +68,9 @@ class LaplaceReg(RegressionMLP):
         self.train_map(loss_fct=loss_fct, n_epochs=n_epochs, lr=lr, batch_size=batch_size)
         self.train_laplace(loss_fct=loss_fct, prior_precision=1, sigma_noise=2)
 
-    def train_laplace(self, loss_fct: callable, prior_precision: float = 1., 
+    def train_laplace(self, loss_fct: callable, prior_precision: float = 1.,
                       sigma_noise: float = 0.9):
-        
+
         self.last_layer = False
         self.param_vector = self.params_to_vector()
         self.prior_precision = prior_precision
@@ -79,7 +78,7 @@ class LaplaceReg(RegressionMLP):
         self.compute_mean_and_cov(self.data_loader, loss_fct)
 
     def make_predictions_on_test(self):
-        pred_la, pred_map = self.predict(self.data_set.test_data.x.unsqueeze(-1), num_samples=1000)
+        pred_la, pred_map = self.predict(self.data_set.test_data.x.unsqueeze(-1), num_samples=self.num_samples)
         mean = pred_la[:, :, 0]
         variance_preds = pred_la[:, :, 1]
         variance = torch.exp(variance_preds)
@@ -97,15 +96,16 @@ class LaplaceReg(RegressionMLP):
         pred_la, pred_map = self.predict(self.data_set.test_data.x.unsqueeze(-1), num_samples=1000)
         self.get_information_theoretical_decomposition(pred_la, stacked=True)
 
+
     def params_to_vector(self):
         """
         returns a vector of all model parameters as a stacked vector
         model
         """
         if not self.last_layer:
-            param_vector = torch.cat([param.view(-1) for param in self.sequential_model.parameters()])
+            param_vector = torch.cat([param.view(-1) for param in self.base_model.parameters()])
         else:
-            last_layer = list(self.sequential_model.children())[-1]
+            last_layer = list(self.base_model.children())[-1]
             param_vector = torch.cat([param.view(-1) for param in last_layer.parameters()])
 
         self.num_params = param_vector.shape[0]
@@ -123,9 +123,9 @@ class LaplaceReg(RegressionMLP):
         weight_idx = 0
 
         if not self.last_layer:
-            param_iterator = self.sequential_model
+            param_iterator = self.base_model
         else:
-            param_iterator = list(self.sequential_model.children())[-1]  # last layer
+            param_iterator = list(self.base_model.children())[-1]  # last layer
 
         for param in param_iterator.parameters():
             param_len = param.numel()
@@ -207,13 +207,13 @@ class LaplaceReg(RegressionMLP):
         self.n_data = len(train_loader.dataset)
 
         for X, y in train_loader:
-            m_out = self.sequential_model(X)
+            m_out = self.base_model(X)
             batch_loss = criterion(m_out, y)
             # jac is of shape N x num_params
             if not self.last_layer:
-                jac, _ = self.jacobian_params(self.sequential_model, X)
+                jac, _ = self.jacobian_params(self.base_model, X)
             else:
-                jac, _ = self.last_layer_jacobian(self.sequential_model, X)
+                jac, _ = self.last_layer_jacobian(self.base_model, X)
 
             # hess is diagonal matrix of shape of NxN, where N is X.shape[0] or batch_size
             hess = torch.eye(X.shape[0])
@@ -240,10 +240,10 @@ class LaplaceReg(RegressionMLP):
         theta_map = self.params_to_vector()
 
         if not self.last_layer:
-            jac, model_map = self.jacobian_params(self.sequential_model, X)
+            jac, model_map = self.jacobian_params(self.base_model, X)
         else:
 
-            jac, model_map = self.last_layer_jacobian(self.sequential_model, X)
+            jac, model_map = self.last_layer_jacobian(self.base_model, X)
 
         offset = model_map - jac @ theta_map.unsqueeze(-1)
 
@@ -277,4 +277,3 @@ class LaplaceReg(RegressionMLP):
             preds_la, preds_map = self.linear_sampling(X, num_samples)
 
         return preds_la, preds_map
-

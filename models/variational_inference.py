@@ -4,7 +4,7 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 from dataclasses import dataclass
-from utils.data_generation import RegressionData
+from utilities.data_generation import RegressionData
 
 
 def kl_loss_function(model, predictions, y, kl_weight=0.7):

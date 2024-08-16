@@ -1,24 +1,26 @@
 from hamiltorch.samplers import define_model_log_prob
-
-from models.base_model import RegressionMLP
-from utils.data_generation import RegressionData
+from models.base_model import RegressionMLP, EvaluationModel
+from utilities.data_generation import RegressionData
 import torch
-import numpy as np
 import hamiltorch
 
-from utils.losses import negative_log_likelihood, negative_log_likelihood_vector, classification_loss_vector, \
-    classification_error_information_vector
 
-
-class MCMCReg(RegressionMLP):
-    def __init__(self, input_dim: int, hidden_dim: int, output_dim: int,
+class MCMCReg(EvaluationModel):
+    def __init__(self,
+                 input_dim: int, hidden_dim: int, output_dim: int,
                  reg_fct: callable, loss_fct: callable, n_hidden: int = 4,
                  n_samples: int = 1000, test_n_samples: int = 1000,
                  wandb_active: bool = False, num_samples: int = 1000,
                  heteroscedastic: bool = False, train_interval: tuple = (-2, 2),
-                 test_interval: tuple = (-3, 3), problem: str = 'regression'):
-        super().__init__(input_dim=input_dim, hidden_dim=hidden_dim,
-                         output_dim=output_dim, n_hidden=n_hidden)
+                 test_interval: tuple = (-3, 3), problem: str = 'regression',
+                 add_sigmoid: bool = False, seed: int = 42, step_size: float = 0.0005,
+                 num_steps_per_sample: int = 30, burn: int = -1, tau: float = 1.0,
+                 **kwargs):
+
+        self.base_model = RegressionMLP(input_dim=input_dim, hidden_dim=hidden_dim,
+                                        output_dim=output_dim, n_hidden=n_hidden,
+                                        add_sigmoid=add_sigmoid, seed=seed)
+
         self.epistemic_uncertainty = None
         self.aleatoric_uncertainty = None
         self.test_mse = None
@@ -47,19 +49,23 @@ class MCMCReg(RegressionMLP):
         self.wandb_active = wandb_active
         self.problem = problem
         self.loss_function = loss_fct
+        self.training_time = None
+        self.step_size = step_size
+        self.num_steps_per_sample = num_steps_per_sample
+        self.burn = burn
+        self.tau = tau
 
-    def train_model(self, step_size: float = 0.0005, num_steps_per_sample: int = 30,
-               burn: int = -1, store_on_GPU: bool = False, debug: bool = False, model_loss: str = 'regression',
-               mass: float = 1.0, tau: float = 1.0, tau_out: float = 2.0, r: int = 0, **kwargs):
+    def train_model(self, store_on_GPU: bool = False, debug: bool = False, model_loss: str = 'regression',
+                    mass: float = 1.0,  tau_out: float = 2.0, r: int = 0, **kwargs):
         """ set tau to 1000 for a less bendy function """
         device = 'cpu'
         tau_list = []
-        for w in self.parameters():
-            tau_list.append(tau)  # set the prior precision to be the same for each set of weights
+        for w in self.base_model.parameters():
+            tau_list.append(self.tau)  # set the prior precision to be the same for each set of weights
         # this sets the prior distribution for the weights
         tau_list = torch.tensor(tau_list).to(device)
         # Set initial weights
-        params_init = hamiltorch.util.flatten(self).to(device).clone()
+        params_init = hamiltorch.util.flatten(self.base_model).to(device).clone()
         # Set the Inverse of the Mass matrix
         inv_mass = torch.ones(params_init.shape) / mass
 
@@ -67,13 +73,13 @@ class MCMCReg(RegressionMLP):
         sampler = hamiltorch.Sampler.HMC
 
         hamiltorch.set_random_seed(r)
-        params_hmc_f = hamiltorch.sample_model(self,
+        params_hmc_f = hamiltorch.sample_model(self.base_model,
                                                x=torch.Tensor(self.data_set.train_data.x).view(-1, 1).to(device),
                                                y=torch.Tensor(self.data_set.train_data.y).view(-1, 1).to(device),
                                                params_init=params_init,
                                                model_loss=self.loss_function, num_samples=self.num_samples,
-                                               burn=burn, inv_mass=inv_mass.to(device), step_size=step_size,
-                                               num_steps_per_sample=num_steps_per_sample, tau_out=tau_out,
+                                               burn=self.burn, inv_mass=inv_mass.to(device), step_size=self.step_size,
+                                               num_steps_per_sample=self.num_steps_per_sample, tau_out=tau_out,
                                                tau_list=tau_list,
                                                debug=debug, store_on_GPU=store_on_GPU,
                                                sampler=sampler)
@@ -81,7 +87,7 @@ class MCMCReg(RegressionMLP):
         params_hmc_gpu = [ll.to(device) for ll in params_hmc_f[1:]]
 
         # Let's evaluate the performance over the training data
-        pred_list_tr, pred_var, log_probs_split_tr = self.make_predictions(self,
+        pred_list_tr, pred_var, log_probs_split_tr = self.make_predictions(self.base_model,
                                                                            x=torch.Tensor(
                                                                                self.data_set.train_data.x).view(-1,
                                                                                                                 1).to(
@@ -109,7 +115,7 @@ class MCMCReg(RegressionMLP):
     def make_predictions_on_test(self, classification_type: str = 'two_outputs'):
         device = 'cpu'
         # Let's predict over the entire test range [-2,2]
-        pred_list, pred_var, log_probs_f = self.make_predictions(self,
+        pred_list, pred_var, log_probs_f = self.make_predictions(self.base_model,
                                                                  x=torch.Tensor(self.data_set.test_data.x).view(-1,
                                                                                                                 1).to(
                                                                      device),
@@ -132,7 +138,6 @@ class MCMCReg(RegressionMLP):
                 self.accuracy = self.get_accuracy(self.data_set.test_data.y, predictions, stacked=True)
             else:
                 self.get_information_theoretical_decomposition(pred_list, stacked=True)
-
 
     def make_predictions_on_test_classification(self):
         self.make_predictions_on_test()

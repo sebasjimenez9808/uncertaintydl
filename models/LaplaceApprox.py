@@ -3,7 +3,7 @@ from laplace.baselaplace import FullLaplace
 from laplace.curvature.backpack import BackPackGGN
 from laplace import Laplace, marglik_training
 
-from utils.data_generation import RegressionData
+from utilities.data_generation import RegressionData
 import numpy as np
 from torch.utils.data import DataLoader
 import torch.utils.data as data_utils

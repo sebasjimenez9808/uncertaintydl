@@ -1,0 +1,13 @@
+\begin{table}[H] 
+ \centering 
+ \begin{tabular}{l|cccccc} \toprule 
+Model & VI & LA & HMC & Deep Ensemble & MC Dropout & Bootstrap \\ 
+ \midrule 
+Predictive Capacity  & 0.06 & 0.07 & 0.06 & 0.08 & 0.06 & 0.05 \\ 
+Accuracy  & 0.50 & 0.40 & 0.38 & 0.33 & 0.33 & 0.56 \\ 
+RMSE  & 0.04 & 0.10 & 0.10 & 0.02 & 0.10 & 0.14 \\ 
+\bottomrule 
+ \end{tabular} 
+ \caption{Quality Evaluation} 
+ \label{tab:my_label} 
+ \end{table}

@@ -10,7 +10,7 @@ from tqdm.auto import trange
 from pyro.infer import Predictive
 import numpy as np
 
-from utils.data_generation import RegressionData
+from utilities.data_generation import RegressionData
 
 
 class PyroBNN(PyroModule):

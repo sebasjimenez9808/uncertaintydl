@@ -4,12 +4,12 @@ import numpy as np
 from torch.utils.data import DataLoader
 import wandb
 
-from models.base_model import RegressionMLP
-from utils.data_generation import RegressionData
+from models.base_model import RegressionMLP, EvaluationModel
+from utilities.data_generation import RegressionData
 import torch.utils.data as data_utils
 
 
-class MCDropoutNet(RegressionMLP):
+class MCDropoutNet(EvaluationModel):
     def __init__(self, input_dim: int, hidden_dim: int, output_dim: int,
                  reg_fct: callable, n_samples: int = 1000,
                  test_n_samples: int = 1000,
@@ -17,9 +17,13 @@ class MCDropoutNet(RegressionMLP):
                  problem: str = 'regression',
                  train_interval: tuple = (-3, 3),
                  test_interval: tuple = (-5, 5),
-                 wandb_active: bool = False, heteroscedastic: bool = False):
-        super().__init__(input_dim=input_dim, hidden_dim=hidden_dim,
-                         output_dim=output_dim, n_hidden=n_hidden)
+                 samples_prediction: int = 100,
+                 wandb_active: bool = False, heteroscedastic: bool = False,
+                 seed: int = 42, add_sigmoid: bool = False):
+        self.base_model = RegressionMLP(input_dim=input_dim, hidden_dim=hidden_dim,
+                                        output_dim=output_dim, n_hidden=n_hidden,
+                                        add_sigmoid=add_sigmoid, seed=seed,
+                                        add_dropout=True, dropout_rate=dropout_p)
         self.total_uncertainty = None
         self.test_mse = None
         self.training_mse = None
@@ -39,6 +43,8 @@ class MCDropoutNet(RegressionMLP):
         self.n_samples = n_samples
         self.wandb_active = wandb_active
         self.dropout_p = dropout_p
+        self.samples_prediction = samples_prediction
+        self.training_time = None
 
     def activate_wandb(self):
         if self.wandb_active:
@@ -63,19 +69,9 @@ class MCDropoutNet(RegressionMLP):
         if self.wandb_active:
             wandb.log(kwargs, step=epoch)
 
-    def forward(self, x, i=1):
-        torch.manual_seed(i + 42)
-        x = torch.relu(self.fc1(x))
-        x = torch.relu(self.dropout(self.fc2(x)))
- #       x = torch.relu(self.dropout(self.fc3(x)))
-        # for layer in self.hidden_layers.values():
-        #     x = torch.relu(self.dropout(layer(x)))
-        pred = self.fc_mu(x)
-        return pred
-
     def train_model(self, loss_fct: callable, n_epochs: int = 100, lr: float = 0.01,
                     batch_size: int = 32):
-        optimizer = torch.optim.Adam(self.parameters(), lr=lr)
+        optimizer = torch.optim.Adam(self.base_model.parameters(), lr=lr)
         data_loader = DataLoader(data_utils.TensorDataset(self.data_set.train_data.x.unsqueeze(-1),
                                                           self.data_set.train_data.y.unsqueeze(-1)),
                                  batch_size=batch_size)
@@ -90,7 +86,7 @@ class MCDropoutNet(RegressionMLP):
                 x = x.float()
                 y = y.float()
                 optimizer.zero_grad()
-                pred = self(x, epoch + 100)
+                pred = self.base_model(x)
                 mu = pred[:, 0]
                 loss = loss_fct(pred, y)
                 loss.backward()
@@ -115,12 +111,9 @@ class MCDropoutNet(RegressionMLP):
         """ Forward pass data with dropout for test data """
         predictions_mean = []
         predictions_sigma = []
-        for i in range(100):
+        for i in range(self.samples_prediction):
             with torch.no_grad():
-                x1 = torch.relu(self.fc1(x.squeeze(-1)))
-                x3 = torch.relu(self.dropout(self.fc2(x1)))
-                #x3 = torch.relu(self.dropout(self.fc3(x2)))
-                pred = self.fc_mu(x3)
+                pred = self.base_model(x.squeeze(-1))
             predictions_mean.append(pred[:, 0])
             predictions_sigma.append(torch.exp(pred[:, 1]))
         return torch.stack(predictions_mean, dim=0), torch.stack(predictions_sigma, dim=0)
@@ -142,11 +135,9 @@ class MCDropoutNet(RegressionMLP):
     def make_predictions_on_test_classification(self):
         x_test = self.data_set.test_data.x.unsqueeze(1).unsqueeze(1)
         predictions = []
-        for i in range(100):
+        for i in range(self.samples_prediction):
             with torch.no_grad():
-                x1 = torch.relu(self.fc1(x_test.squeeze(-1)))
-                x2 = torch.relu(self.dropout(self.fc2(x1)))
-                pred = self.fc_mu(x2)
+                pred = self.base_model(x_test.squeeze(-1))
                 predictions.append(pred)
         self.accuracy = self.get_accuracy(self.data_set.test_data.y, predictions)
         print('Accuracy:', self.accuracy)
@@ -154,10 +145,8 @@ class MCDropoutNet(RegressionMLP):
     def make_predictions_on_test_classification_information(self):
         x_test = self.data_set.test_data.x.unsqueeze(1).unsqueeze(1)
         predictions = []
-        for i in range(1000):
+        for i in range(self.samples_prediction):
             with torch.no_grad():
-                x1 = torch.relu(self.fc1(x_test.squeeze(-1)))
-                x2 = torch.relu(self.dropout(self.fc2(x1)))
-                pred = torch.sigmoid(self.fc_mu(x2))
+                pred = self.base_model(x_test.squeeze(-1))
                 predictions.append(pred)
         self.get_information_theoretical_decomposition(predictions)
