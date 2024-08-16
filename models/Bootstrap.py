@@ -107,6 +107,7 @@ class BootstrapEnsemble(EvaluationModel):
         self.activate_wandb()
 
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        print('Device:', device)
         for model in self.models:
             model.to(device)
 
