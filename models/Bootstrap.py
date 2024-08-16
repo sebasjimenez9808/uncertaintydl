@@ -106,12 +106,16 @@ class BootstrapEnsemble(EvaluationModel):
         optimizer = self.get_optimizer(lr)
         self.activate_wandb()
 
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        for model in self.models:
+            model.to(device)
+
         for i, model in enumerate(tqdm(self.models)):
-            model.to('cuda')
             mse_this_model = []
             loss_this_model = []
             for epoch in range(n_epochs):
                 for x, y in data_loader[i]:
+                    x, y = x.to(device), y.to(device)
                     optimizer[i].zero_grad()
                     pred = model(x)
                     # mu, sigma = pred[:, 0], pred[:, 1]
@@ -169,6 +173,8 @@ class BootstrapEnsemble(EvaluationModel):
 
     def make_predictions_on_test_classification_information(self):
         x_test = self.data_set.test_data.x.unsqueeze(1).unsqueeze(1)
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        x_test = x_test.to(device)
         predictions = []
         for model in self.models:
             with torch.no_grad():
