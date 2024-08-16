@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 from torch.utils.data import DataLoader
-import wandb
+#import wandb
 
 from models.base_model import RegressionMLP, EvaluationModel
 from utilities.data_generation import RegressionData

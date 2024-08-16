@@ -2,7 +2,7 @@ from assets.model_params import get_model_arguments
 from assets.tunning_config import get_config_file, get_training_inputs
 from training.training_functions import train_and_test_model
 
-import wandb
+#import wandb
 
 model = 'variational'
 
